@@ -20,7 +20,7 @@ namespace QWQ
         }
 
         //整表查询语句，查询函数参数添加条件
-        private string sqlString = @"select room_id,name,is_full from Room,Room_type 
+        private string sqlString = @"select room_id, name, price, is_full, deposit from Room,Room_type 
                                               where Room_type.room_type_id=Room.type_id ";
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace QWQ
             conn.Close();
             ///
         }
-        
+
         /// <summary>
         /// 按条件查询空房
         /// </summary>
