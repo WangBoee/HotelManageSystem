@@ -12,12 +12,14 @@ using System.Data.SqlClient;
 
 namespace HotelManageSystem
 {
+    //此窗体仅用于测试，懒得打注释
     public partial class TestForm : Form
     {
         public TestForm()
         {
             InitializeComponent();
         }
+
         private void query(string sqlCmd0 = "")
         {
             string sqlCmd = @"select * from testTable";
@@ -49,8 +51,26 @@ namespace HotelManageSystem
 
         private void Query_Click(object sender, EventArgs e)
         {
-            string datePick = $" where testDate='{ this.DatePick.Value.ToString("yyyy/MM/dd")}'";
-            query(datePick);
+            //string datePick = $" where testDate='{ this.DatePick.Value.ToString("yyyy/MM/dd")}'";
+            //query(datePick);
+            query();
+        }
+
+        private void updateData_Click(object sender, EventArgs e)
+        {
+            int num = 6;
+            string sqlCmd = $@"update testTable set testBool=1 where testNum={num}";
+            string sqlStr = @"Data Source=BOI\SQLEXPRESS;Initial Catalog=HotelDB;Integrated Security=True;Pooling=False";
+
+            SqlConnection sqlConnection = new SqlConnection(sqlStr);
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(sqlCmd);
+            sqlCommand.Connection = sqlConnection;
+            int i = sqlCommand.ExecuteNonQuery();
+            if (i > 0)
+                MessageBox.Show("ok");
+            sqlConnection.Close();
         }
     }
 }

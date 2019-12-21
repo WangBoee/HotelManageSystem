@@ -31,6 +31,7 @@
             this.DataView = new System.Windows.Forms.DataGridView();
             this.DatePick = new System.Windows.Forms.DateTimePicker();
             this.Query = new System.Windows.Forms.Button();
+            this.updateData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             // Query
             // 
-            this.Query.Location = new System.Drawing.Point(429, 44);
+            this.Query.Location = new System.Drawing.Point(275, 73);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(106, 43);
             this.Query.TabIndex = 2;
@@ -65,11 +66,22 @@
             this.Query.UseVisualStyleBackColor = true;
             this.Query.Click += new System.EventHandler(this.Query_Click);
             // 
+            // updateData
+            // 
+            this.updateData.Location = new System.Drawing.Point(275, 12);
+            this.updateData.Name = "updateData";
+            this.updateData.Size = new System.Drawing.Size(106, 42);
+            this.updateData.TabIndex = 3;
+            this.updateData.Text = "update";
+            this.updateData.UseVisualStyleBackColor = true;
+            this.updateData.Click += new System.EventHandler(this.updateData_Click);
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 452);
+            this.Controls.Add(this.updateData);
             this.Controls.Add(this.Query);
             this.Controls.Add(this.DatePick);
             this.Controls.Add(this.DataView);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.DataGridView DataView;
         private System.Windows.Forms.DateTimePicker DatePick;
         private System.Windows.Forms.Button Query;
+        private System.Windows.Forms.Button updateData;
     }
 }

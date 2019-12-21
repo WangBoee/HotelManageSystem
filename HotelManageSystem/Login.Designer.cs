@@ -97,11 +97,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 280);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.psdText);
-            this.Controls.Add(this.userText);
             this.Controls.Add(this.verInfo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.userText);
+            this.Controls.Add(this.psdText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Login";
