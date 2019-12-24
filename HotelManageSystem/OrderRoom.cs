@@ -82,6 +82,7 @@ namespace QWQ
                         if (updateCmd.ExecuteNonQuery() > 0)
                         {   //成功修改房间状态
                             MessageBox.Show("success", "info");  //信息窗口提示
+                            OrderRoom_Load(sender, e);
                         }
                         updateConn.Close(); //断开数据库连接
                     }

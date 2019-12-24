@@ -38,13 +38,13 @@
             this.affirmSearchEmpty = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvRoomData = new System.Windows.Forms.DataGridView();
-            this.menuOrder = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.订房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.room_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.type_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuOrder = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.订房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoomData)).BeginInit();
             this.menuOrder.SuspendLayout();
@@ -74,21 +74,21 @@
             "商务间",
             "行政间",
             "所有房间"});
-            this.comboBox1.Location = new System.Drawing.Point(142, 27);
+            this.comboBox1.Location = new System.Drawing.Point(110, 27);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 4;
             // 
             // inquireDate
             // 
-            this.inquireDate.Location = new System.Drawing.Point(312, 25);
+            this.inquireDate.Location = new System.Drawing.Point(282, 25);
             this.inquireDate.Name = "inquireDate";
             this.inquireDate.Size = new System.Drawing.Size(200, 25);
             this.inquireDate.TabIndex = 3;
             // 
             // affirmSearchAll
             // 
-            this.affirmSearchAll.Location = new System.Drawing.Point(533, 19);
+            this.affirmSearchAll.Location = new System.Drawing.Point(521, 19);
             this.affirmSearchAll.Name = "affirmSearchAll";
             this.affirmSearchAll.Size = new System.Drawing.Size(110, 36);
             this.affirmSearchAll.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             // affirmSearchEmpty
             // 
-            this.affirmSearchEmpty.Location = new System.Drawing.Point(660, 19);
+            this.affirmSearchEmpty.Location = new System.Drawing.Point(647, 19);
             this.affirmSearchEmpty.Name = "affirmSearchEmpty";
             this.affirmSearchEmpty.Size = new System.Drawing.Size(110, 36);
             this.affirmSearchEmpty.TabIndex = 2;
@@ -109,7 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 34);
+            this.label1.Location = new System.Drawing.Point(37, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 1;
@@ -143,21 +143,6 @@
             this.dgvRoomData.Size = new System.Drawing.Size(775, 340);
             this.dgvRoomData.TabIndex = 1;
             this.dgvRoomData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRoomData_CellMouseDown);
-            // 
-            // menuOrder
-            // 
-            this.menuOrder.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuOrder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.订房ToolStripMenuItem});
-            this.menuOrder.Name = "menuOrder";
-            this.menuOrder.Size = new System.Drawing.Size(109, 28);
-            // 
-            // 订房ToolStripMenuItem
-            // 
-            this.订房ToolStripMenuItem.Name = "订房ToolStripMenuItem";
-            this.订房ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
-            this.订房ToolStripMenuItem.Text = "订房";
-            this.订房ToolStripMenuItem.Click += new System.EventHandler(this.订房ToolStripMenuItem_Click);
             // 
             // room_id
             // 
@@ -199,6 +184,21 @@
             this.deposit.MinimumWidth = 6;
             this.deposit.Name = "deposit";
             this.deposit.ReadOnly = true;
+            // 
+            // menuOrder
+            // 
+            this.menuOrder.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuOrder.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.订房ToolStripMenuItem});
+            this.menuOrder.Name = "menuOrder";
+            this.menuOrder.Size = new System.Drawing.Size(109, 28);
+            // 
+            // 订房ToolStripMenuItem
+            // 
+            this.订房ToolStripMenuItem.Name = "订房ToolStripMenuItem";
+            this.订房ToolStripMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.订房ToolStripMenuItem.Text = "订房";
+            this.订房ToolStripMenuItem.Click += new System.EventHandler(this.订房ToolStripMenuItem_Click);
             // 
             // Search
             // 

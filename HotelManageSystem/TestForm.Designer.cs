@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.DataView = new System.Windows.Forms.DataGridView();
-            this.DatePick = new System.Windows.Forms.DateTimePicker();
+            this.DatePickStart = new System.Windows.Forms.DateTimePicker();
             this.Query = new System.Windows.Forms.Button();
             this.updateData = new System.Windows.Forms.Button();
+            this.DatePickEnd = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.DataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,19 +47,19 @@
             this.DataView.Name = "DataView";
             this.DataView.RowHeadersWidth = 51;
             this.DataView.RowTemplate.Height = 27;
-            this.DataView.Size = new System.Drawing.Size(571, 302);
+            this.DataView.Size = new System.Drawing.Size(673, 302);
             this.DataView.TabIndex = 0;
             // 
-            // DatePick
+            // DatePickStart
             // 
-            this.DatePick.Location = new System.Drawing.Point(12, 52);
-            this.DatePick.Name = "DatePick";
-            this.DatePick.Size = new System.Drawing.Size(200, 25);
-            this.DatePick.TabIndex = 1;
+            this.DatePickStart.Location = new System.Drawing.Point(12, 29);
+            this.DatePickStart.Name = "DatePickStart";
+            this.DatePickStart.Size = new System.Drawing.Size(200, 25);
+            this.DatePickStart.TabIndex = 1;
             // 
             // Query
             // 
-            this.Query.Location = new System.Drawing.Point(275, 73);
+            this.Query.Location = new System.Drawing.Point(513, 73);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(106, 43);
             this.Query.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // updateData
             // 
-            this.updateData.Location = new System.Drawing.Point(275, 12);
+            this.updateData.Location = new System.Drawing.Point(513, 12);
             this.updateData.Name = "updateData";
             this.updateData.Size = new System.Drawing.Size(106, 42);
             this.updateData.TabIndex = 3;
@@ -76,14 +77,22 @@
             this.updateData.UseVisualStyleBackColor = true;
             this.updateData.Click += new System.EventHandler(this.updateData_Click);
             // 
+            // DatePickEnd
+            // 
+            this.DatePickEnd.Location = new System.Drawing.Point(12, 91);
+            this.DatePickEnd.Name = "DatePickEnd";
+            this.DatePickEnd.Size = new System.Drawing.Size(200, 25);
+            this.DatePickEnd.TabIndex = 1;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 452);
+            this.ClientSize = new System.Drawing.Size(697, 452);
             this.Controls.Add(this.updateData);
             this.Controls.Add(this.Query);
-            this.Controls.Add(this.DatePick);
+            this.Controls.Add(this.DatePickEnd);
+            this.Controls.Add(this.DatePickStart);
             this.Controls.Add(this.DataView);
             this.Name = "TestForm";
             this.Text = "TestForm";
@@ -96,8 +105,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DataView;
-        private System.Windows.Forms.DateTimePicker DatePick;
+        private System.Windows.Forms.DateTimePicker DatePickStart;
         private System.Windows.Forms.Button Query;
         private System.Windows.Forms.Button updateData;
+        private System.Windows.Forms.DateTimePicker DatePickEnd;
     }
 }
