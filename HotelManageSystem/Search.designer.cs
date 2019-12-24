@@ -39,8 +39,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvRoomData = new System.Windows.Forms.DataGridView();
             this.room_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuOrder = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.订房ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
@@ -72,21 +74,21 @@
             "商务间",
             "行政间",
             "所有房间"});
-            this.comboBox1.Location = new System.Drawing.Point(142, 27);
+            this.comboBox1.Location = new System.Drawing.Point(110, 27);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 4;
             // 
             // inquireDate
             // 
-            this.inquireDate.Location = new System.Drawing.Point(312, 25);
+            this.inquireDate.Location = new System.Drawing.Point(282, 25);
             this.inquireDate.Name = "inquireDate";
             this.inquireDate.Size = new System.Drawing.Size(200, 25);
             this.inquireDate.TabIndex = 3;
             // 
             // affirmSearchAll
             // 
-            this.affirmSearchAll.Location = new System.Drawing.Point(533, 19);
+            this.affirmSearchAll.Location = new System.Drawing.Point(521, 19);
             this.affirmSearchAll.Name = "affirmSearchAll";
             this.affirmSearchAll.Size = new System.Drawing.Size(110, 36);
             this.affirmSearchAll.TabIndex = 2;
@@ -96,7 +98,7 @@
             // 
             // affirmSearchEmpty
             // 
-            this.affirmSearchEmpty.Location = new System.Drawing.Point(660, 19);
+            this.affirmSearchEmpty.Location = new System.Drawing.Point(647, 19);
             this.affirmSearchEmpty.Name = "affirmSearchEmpty";
             this.affirmSearchEmpty.Size = new System.Drawing.Size(110, 36);
             this.affirmSearchEmpty.TabIndex = 2;
@@ -107,7 +109,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 34);
+            this.label1.Location = new System.Drawing.Point(37, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 1;
@@ -120,8 +122,10 @@
             this.dgvRoomData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoomData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.room_id,
+            this.is_full,
             this.type_name,
-            this.is_full});
+            this.price,
+            this.deposit});
             this.dgvRoomData.ContextMenuStrip = this.menuOrder;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -149,6 +153,14 @@
             this.room_id.ReadOnly = true;
             this.room_id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // is_full
+            // 
+            this.is_full.DataPropertyName = "is_full";
+            this.is_full.HeaderText = "入住状态";
+            this.is_full.MinimumWidth = 6;
+            this.is_full.Name = "is_full";
+            this.is_full.ReadOnly = true;
+            // 
             // type_name
             // 
             this.type_name.DataPropertyName = "name";
@@ -157,13 +169,21 @@
             this.type_name.Name = "type_name";
             this.type_name.ReadOnly = true;
             // 
-            // is_full
+            // price
             // 
-            this.is_full.DataPropertyName = "is_full";
-            this.is_full.HeaderText = "入住状态";
-            this.is_full.MinimumWidth = 6;
-            this.is_full.Name = "is_full";
-            this.is_full.ReadOnly = true;
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "房间价格";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // deposit
+            // 
+            this.deposit.DataPropertyName = "deposit";
+            this.deposit.HeaderText = "押金";
+            this.deposit.MinimumWidth = 6;
+            this.deposit.Name = "deposit";
+            this.deposit.ReadOnly = true;
             // 
             // menuOrder
             // 
@@ -210,10 +230,12 @@
         private System.Windows.Forms.DataGridView dgvRoomData;
         private System.Windows.Forms.ContextMenuStrip menuOrder;
         private System.Windows.Forms.ToolStripMenuItem 订房ToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn room_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn is_full;
         private System.Windows.Forms.Button affirmSearchAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn room_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn is_full;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deposit;
     }
 }
 

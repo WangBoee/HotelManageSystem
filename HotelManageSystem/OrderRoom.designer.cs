@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderRoom));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.customerPhone = new System.Windows.Forms.Label();
-            this.customerName = new System.Windows.Forms.Label();
+            this.deposit = new System.Windows.Forms.Label();
+            this.roomPrice = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.roomType = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.isVIP = new System.Windows.Forms.CheckBox();
             this.newPredeterminationName = new System.Windows.Forms.TextBox();
             this.newPhoneNumber = new System.Windows.Forms.TextBox();
             this.newIDNumber = new System.Windows.Forms.TextBox();
@@ -52,15 +53,16 @@
             this.checkInTime = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.isVIP = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.otherMoney = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.customerPhone);
-            this.groupBox1.Controls.Add(this.customerName);
+            this.groupBox1.Controls.Add(this.deposit);
+            this.groupBox1.Controls.Add(this.roomPrice);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.roomType);
@@ -74,41 +76,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "预定房间";
             // 
-            // customerPhone
+            // deposit
             // 
-            this.customerPhone.AutoSize = true;
-            this.customerPhone.Location = new System.Drawing.Point(622, 110);
-            this.customerPhone.Name = "customerPhone";
-            this.customerPhone.Size = new System.Drawing.Size(63, 15);
-            this.customerPhone.TabIndex = 8;
-            this.customerPhone.Text = "label12";
+            this.deposit.AutoSize = true;
+            this.deposit.Location = new System.Drawing.Point(622, 110);
+            this.deposit.Name = "deposit";
+            this.deposit.Size = new System.Drawing.Size(63, 15);
+            this.deposit.TabIndex = 8;
+            this.deposit.Text = "label12";
             // 
-            // customerName
+            // roomPrice
             // 
-            this.customerName.AutoSize = true;
-            this.customerName.Location = new System.Drawing.Point(622, 48);
-            this.customerName.Name = "customerName";
-            this.customerName.Size = new System.Drawing.Size(63, 15);
-            this.customerName.TabIndex = 7;
-            this.customerName.Text = "label11";
+            this.roomPrice.AutoSize = true;
+            this.roomPrice.Location = new System.Drawing.Point(622, 48);
+            this.roomPrice.Name = "roomPrice";
+            this.roomPrice.Size = new System.Drawing.Size(63, 15);
+            this.roomPrice.TabIndex = 7;
+            this.roomPrice.Text = "label11";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(480, 110);
+            this.label10.Location = new System.Drawing.Point(510, 110);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.Size = new System.Drawing.Size(52, 15);
             this.label10.TabIndex = 6;
-            this.label10.Text = "预留手机号";
+            this.label10.Text = "押金：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(480, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(82, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "预留姓名";
+            this.label3.Text = "房间价格：";
             // 
             // roomType
             // 
@@ -148,6 +150,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.otherMoney);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.isVIP);
             this.groupBox2.Controls.Add(this.newPredeterminationName);
             this.groupBox2.Controls.Add(this.newPhoneNumber);
@@ -168,6 +172,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "新房间";
+            // 
+            // isVIP
+            // 
+            this.isVIP.AutoSize = true;
+            this.isVIP.Location = new System.Drawing.Point(167, 234);
+            this.isVIP.Name = "isVIP";
+            this.isVIP.Size = new System.Drawing.Size(83, 19);
+            this.isVIP.TabIndex = 18;
+            this.isVIP.Text = "是否VIP";
+            this.isVIP.UseVisualStyleBackColor = true;
             // 
             // newPredeterminationName
             // 
@@ -225,6 +239,7 @@
             this.btnOrder.TabIndex = 9;
             this.btnOrder.Text = "确定";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnClose
             // 
@@ -239,7 +254,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(491, 164);
+            this.label9.Location = new System.Drawing.Point(491, 116);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 15);
             this.label9.TabIndex = 8;
@@ -247,14 +262,16 @@
             // 
             // checkOutTime
             // 
-            this.checkOutTime.Location = new System.Drawing.Point(597, 164);
+            this.checkOutTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.checkOutTime.Location = new System.Drawing.Point(597, 109);
             this.checkOutTime.Name = "checkOutTime";
             this.checkOutTime.Size = new System.Drawing.Size(200, 25);
             this.checkOutTime.TabIndex = 7;
             // 
             // checkInTime
             // 
-            this.checkInTime.Location = new System.Drawing.Point(597, 81);
+            this.checkInTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.checkInTime.Location = new System.Drawing.Point(597, 55);
             this.checkInTime.Name = "checkInTime";
             this.checkInTime.Size = new System.Drawing.Size(200, 25);
             this.checkInTime.TabIndex = 6;
@@ -262,7 +279,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(491, 81);
+            this.label8.Location = new System.Drawing.Point(491, 62);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 15);
             this.label8.TabIndex = 5;
@@ -276,15 +293,21 @@
             this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 0;
             // 
-            // isVIP
+            // label11
             // 
-            this.isVIP.AutoSize = true;
-            this.isVIP.Location = new System.Drawing.Point(167, 234);
-            this.isVIP.Name = "isVIP";
-            this.isVIP.Size = new System.Drawing.Size(83, 19);
-            this.isVIP.TabIndex = 18;
-            this.isVIP.Text = "是否VIP";
-            this.isVIP.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(495, 167);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 15);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "其他消费";
+            // 
+            // otherMoney
+            // 
+            this.otherMoney.Location = new System.Drawing.Point(597, 164);
+            this.otherMoney.Name = "otherMoney";
+            this.otherMoney.Size = new System.Drawing.Size(200, 25);
+            this.otherMoney.TabIndex = 20;
             // 
             // OrderRoom
             // 
@@ -296,6 +319,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrderRoom";
             this.Text = "订房";
+            this.Load += new System.EventHandler(this.OrderRoom_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -318,8 +342,8 @@
         private System.Windows.Forms.DateTimePicker checkInTime;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label customerPhone;
-        private System.Windows.Forms.Label customerName;
+        private System.Windows.Forms.Label deposit;
+        private System.Windows.Forms.Label roomPrice;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox newPredeterminationName;
@@ -330,5 +354,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.CheckBox isVIP;
+        private System.Windows.Forms.TextBox otherMoney;
+        private System.Windows.Forms.Label label11;
     }
 }
