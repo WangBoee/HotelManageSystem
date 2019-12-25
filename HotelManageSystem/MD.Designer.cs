@@ -83,19 +83,20 @@
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billManage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.busearchBillAll = new System.Windows.Forms.Button();
             this.searchBillTime = new System.Windows.Forms.Button();
             this.billEndTimeMD = new System.Windows.Forms.DateTimePicker();
             this.billBeginTimeMD = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.showBillMD = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.book_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customer_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.in_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.out_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
+            this.prices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageMD.SuspendLayout();
             this.roomManage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -365,7 +366,7 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "职工管理";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            //this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // groupBox8
             // 
@@ -638,6 +639,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.busearchBillAll);
             this.groupBox1.Controls.Add(this.searchBillTime);
             this.groupBox1.Controls.Add(this.billEndTimeMD);
             this.groupBox1.Controls.Add(this.billBeginTimeMD);
@@ -650,15 +652,27 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "时间段选择账单";
+            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // busearchBillAll
+            // 
+            this.busearchBillAll.Location = new System.Drawing.Point(928, 113);
+            this.busearchBillAll.Name = "busearchBillAll";
+            this.busearchBillAll.Size = new System.Drawing.Size(147, 41);
+            this.busearchBillAll.TabIndex = 2;
+            this.busearchBillAll.Text = "查询全部";
+            this.busearchBillAll.UseVisualStyleBackColor = true;
+            this.busearchBillAll.Click += new System.EventHandler(this.busearchBillAll_Click);
             // 
             // searchBillTime
             // 
-            this.searchBillTime.Location = new System.Drawing.Point(875, 109);
+            this.searchBillTime.Location = new System.Drawing.Point(766, 113);
             this.searchBillTime.Name = "searchBillTime";
             this.searchBillTime.Size = new System.Drawing.Size(147, 41);
             this.searchBillTime.TabIndex = 2;
             this.searchBillTime.Text = "查询";
             this.searchBillTime.UseVisualStyleBackColor = true;
+            this.searchBillTime.Click += new System.EventHandler(this.searchBillTime_Click);
             // 
             // billEndTimeMD
             // 
@@ -696,62 +710,14 @@
             this.customer_id,
             this.in_time,
             this.out_time,
-            this.price});
+            this.prices});
             this.showBillMD.Location = new System.Drawing.Point(6, 168);
             this.showBillMD.Name = "showBillMD";
+            this.showBillMD.ReadOnly = true;
             this.showBillMD.RowHeadersWidth = 51;
             this.showBillMD.RowTemplate.Height = 27;
             this.showBillMD.Size = new System.Drawing.Size(1069, 412);
             this.showBillMD.TabIndex = 5;
-            // 
-            // order_id
-            // 
-            this.order_id.HeaderText = "订单号";
-            this.order_id.MinimumWidth = 6;
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            // 
-            // book_time
-            // 
-            this.book_time.HeaderText = "订单生成日期";
-            this.book_time.MinimumWidth = 6;
-            this.book_time.Name = "book_time";
-            this.book_time.ReadOnly = true;
-            // 
-            // room_id
-            // 
-            this.room_id.HeaderText = "房号";
-            this.room_id.MinimumWidth = 6;
-            this.room_id.Name = "room_id";
-            this.room_id.ReadOnly = true;
-            // 
-            // customer_id
-            // 
-            this.customer_id.HeaderText = "顾客身份证";
-            this.customer_id.MinimumWidth = 6;
-            this.customer_id.Name = "customer_id";
-            this.customer_id.ReadOnly = true;
-            // 
-            // in_time
-            // 
-            this.in_time.HeaderText = "入住日期";
-            this.in_time.MinimumWidth = 6;
-            this.in_time.Name = "in_time";
-            this.in_time.ReadOnly = true;
-            // 
-            // out_time
-            // 
-            this.out_time.HeaderText = "离店日期";
-            this.out_time.MinimumWidth = 6;
-            this.out_time.Name = "out_time";
-            this.out_time.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "所有消费";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
             // 
             // label2
             // 
@@ -761,6 +727,62 @@
             this.label2.Size = new System.Drawing.Size(22, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "—";
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "订单号";
+            this.order_id.MinimumWidth = 6;
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            // 
+            // book_time
+            // 
+            this.book_time.DataPropertyName = "book_time";
+            this.book_time.HeaderText = "订单生成日期";
+            this.book_time.MinimumWidth = 6;
+            this.book_time.Name = "book_time";
+            this.book_time.ReadOnly = true;
+            // 
+            // room_id
+            // 
+            this.room_id.DataPropertyName = "room_id";
+            this.room_id.HeaderText = "房号";
+            this.room_id.MinimumWidth = 6;
+            this.room_id.Name = "room_id";
+            this.room_id.ReadOnly = true;
+            // 
+            // customer_id
+            // 
+            this.customer_id.DataPropertyName = "customer_id";
+            this.customer_id.HeaderText = "顾客身份证";
+            this.customer_id.MinimumWidth = 6;
+            this.customer_id.Name = "customer_id";
+            this.customer_id.ReadOnly = true;
+            // 
+            // in_time
+            // 
+            this.in_time.DataPropertyName = "in_time";
+            this.in_time.HeaderText = "入住日期";
+            this.in_time.MinimumWidth = 6;
+            this.in_time.Name = "in_time";
+            this.in_time.ReadOnly = true;
+            // 
+            // out_time
+            // 
+            this.out_time.DataPropertyName = "out_time";
+            this.out_time.HeaderText = "离店日期";
+            this.out_time.MinimumWidth = 6;
+            this.out_time.Name = "out_time";
+            this.out_time.ReadOnly = true;
+            // 
+            // prices
+            // 
+            this.prices.DataPropertyName = "prices";
+            this.prices.HeaderText = "所有消费";
+            this.prices.MinimumWidth = 6;
+            this.prices.Name = "prices";
+            this.prices.ReadOnly = true;
             // 
             // MD
             // 
@@ -861,12 +883,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.ComboBox addStaffSex;
         private System.Windows.Forms.ComboBox addStaffPos;
+        private System.Windows.Forms.Button busearchBillAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn book_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn room_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn in_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn out_time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prices;
     }
 }

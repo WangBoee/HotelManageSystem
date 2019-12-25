@@ -25,6 +25,8 @@ namespace QWQ
 
         string sqlStaffString = @"select * from Staff";
 
+        string sqlOrdersString = @"select order_id,book_time,room_id,customer_id,in_time,out_time,(price+other_money) as prices from Orders";
+
         private void MD_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -67,7 +69,11 @@ namespace QWQ
 
         private void MD_Load(object sender, EventArgs e)
         {
+            this.addStaffSex.SelectedIndex = 0;
+            this.addStaffPos.SelectedIndex = 0;
             queryAll();
+            queryAll(sqlStaffString, 1);
+            queryAll(sqlOrdersString, 2);
             /*
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
@@ -161,18 +167,18 @@ namespace QWQ
             queryAll();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-            //int staffId = Int32.Parse(this.searchStaffNumber.Text.Trim());
-            this.addStaffSex.SelectedIndex = 0;
-            this.addStaffPos.SelectedIndex = 0;
-            string queryStaff = sqlStaffString;
-            queryAll(queryStaff, 1);
-        }
+        //private void groupBox3_Enter(object sender, EventArgs e)
+        //{
+        //    //int staffId = Int32.Parse(this.searchStaffNumber.Text.Trim());
+        //    //this.addStaffSex.SelectedIndex = 0;
+        //    //this.addStaffPos.SelectedIndex = 0;
+        //    //string queryStaff = sqlStaffString;
+        //    //queryAll(queryStaff, 1);
+        //}
 
         private void showAllStaff_Click(object sender, EventArgs e)
         {
-            groupBox3_Enter(sender, e);
+            queryAll(sqlStaffString, 1);
         }
 
         private void sureToSearchStaff_Click(object sender, EventArgs e)
@@ -195,7 +201,7 @@ namespace QWQ
                 if (sqlDeleteRoom.ExecuteNonQuery() != -1)
                 {
                     MessageBox.Show("员工 " + this.searchStaffNumber.Text.Trim() + "删除成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    groupBox3_Enter(sender, e);
+                    queryAll(sqlStaffString, 1);
                 }
                 else
                 {
@@ -221,7 +227,7 @@ namespace QWQ
             string staffPos = this.addStaffPos.Text;
             string staffPhone = this.addStaffPhone.Text.Trim();
 
-            if (this.addStaffNumber.Text == ""|| this.addStaffAge.Text ==""|| this.addStaffName.Text==""|| this.addStaffPhone.Text=="")
+            if (this.addStaffNumber.Text == "" || this.addStaffAge.Text == "" || this.addStaffName.Text == "" || this.addStaffPhone.Text == "")
             {
                 MessageBox.Show("请输入完整数据!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -235,9 +241,30 @@ namespace QWQ
                 if (insertCmd.ExecuteNonQuery() != -1)
                 {
                     MessageBox.Show("员工添加成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    groupBox3_Enter(sender, e);
+                    queryAll(sqlStaffString, 1);
                 }
             }
         }
+
+        private void busearchBillAll_Click(object sender, EventArgs e)
+        {
+            //SqlConnection conn = new SqlConnection(connString);
+            //conn.Open();
+            //SqlDataAdapter sda = new SqlDataAdapter(sqlOrdersString, conn);
+            //DataTable table = new DataTable();
+            //sda.Fill(table);
+            //this.showBillMD.DataSource = table;
+            queryAll(sqlOrdersString, 2);
+        }
+
+        private void searchBillTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void groupBox1_Enter(object sender, EventArgs e)
+        //{
+        //    queryAll(sqlOrdersString, 2);
+        //}
     }
 }
