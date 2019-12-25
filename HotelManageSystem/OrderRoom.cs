@@ -60,11 +60,16 @@ namespace QWQ
                 MessageBox.Show("输入完整顾客信息!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (days<=0)
+            {
+                MessageBox.Show("日期选择不正确!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             //MessageBox.Show(isVIP);   //test
             //数据库连接字串
             string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString;
             //sql语句，向Customer表插入新增顾客信息
-            string insert2Cusromers = $@"insert Customer(customer_id, name, phone, is_vip) values({id},N'{name}','{phone}',{isVIP})";
+            string insert2Cusromers = $@"insert Customer(customer_id, customer_name, phone, is_vip) values({id},N'{name}',N'{phone}',{isVIP})";
             //sql语句，向Orders表插入订单信息
             string insert2Orders = $@"insert Orders(book_time, in_time, out_time, customer_id, room_id, price, deposit, other_money) values(getdate(), '{checkInTime}','{checkOutTime}',{id},{roomId},{roomPrice},{desposit},{otherMoney})";
 
