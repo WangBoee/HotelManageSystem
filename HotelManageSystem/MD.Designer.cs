@@ -89,7 +89,6 @@
             this.billBeginTimeMD = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.showBillMD = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.book_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.room_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +96,11 @@
             this.in_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.out_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prices = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.allBill = new System.Windows.Forms.Label();
+            this.allCounts = new System.Windows.Forms.Label();
             this.manageMD.SuspendLayout();
             this.roomManage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -366,7 +370,6 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "职工管理";
-            //this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // groupBox8
             // 
@@ -639,6 +642,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.allCounts);
+            this.groupBox1.Controls.Add(this.allBill);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.busearchBillAll);
             this.groupBox1.Controls.Add(this.searchBillTime);
             this.groupBox1.Controls.Add(this.billEndTimeMD);
@@ -652,7 +659,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "时间段选择账单";
-            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // busearchBillAll
             // 
@@ -719,15 +725,6 @@
             this.showBillMD.Size = new System.Drawing.Size(1069, 412);
             this.showBillMD.TabIndex = 5;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(274, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "—";
-            // 
             // order_id
             // 
             this.order_id.DataPropertyName = "order_id";
@@ -783,6 +780,55 @@
             this.prices.MinimumWidth = 6;
             this.prices.Name = "prices";
             this.prices.ReadOnly = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(274, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "—";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(738, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 26);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "  总收入：";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(738, 59);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(107, 26);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "总订单数：";
+            // 
+            // allBill
+            // 
+            this.allBill.AutoSize = true;
+            this.allBill.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.allBill.Location = new System.Drawing.Point(838, 21);
+            this.allBill.Name = "allBill";
+            this.allBill.Size = new System.Drawing.Size(83, 26);
+            this.allBill.TabIndex = 9;
+            this.allBill.Text = "label13";
+            // 
+            // allCounts
+            // 
+            this.allCounts.AutoSize = true;
+            this.allCounts.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.allCounts.Location = new System.Drawing.Point(838, 59);
+            this.allCounts.Name = "allCounts";
+            this.allCounts.Size = new System.Drawing.Size(83, 26);
+            this.allCounts.TabIndex = 9;
+            this.allCounts.Text = "label13";
             // 
             // MD
             // 
@@ -891,5 +937,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn in_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn out_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn prices;
+        private System.Windows.Forms.Label allCounts;
+        private System.Windows.Forms.Label allBill;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label6;
     }
 }

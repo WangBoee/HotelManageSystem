@@ -18,17 +18,18 @@ namespace QWQ
         {
             InitializeComponent();
         }
-
+        Search sr;
         public DataGridViewRow dataViewRow;
         /// <summary>
         /// 重载构造函数
         /// 通过上一窗体传入的单行数据确定此窗体控件属性
         /// </summary>
         /// <param name="dataRow"></param>
-        public OrderRoom(DataGridViewRow dataRow)
+        public OrderRoom(DataGridViewRow dataRow,Search order)
         {
             InitializeComponent();
             dataViewRow = dataRow;
+            sr = order;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -98,6 +99,7 @@ namespace QWQ
             {   //捕获异常, 弹窗提示异常信息
                 MessageBox.Show(ee.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            sr.Ord_updateQue();
         }
 
         private void OrderRoom_Load(object sender, EventArgs e)
