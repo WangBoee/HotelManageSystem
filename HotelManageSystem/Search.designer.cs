@@ -140,6 +140,7 @@
             this.dgvRoomData.Name = "dgvRoomData";
             this.dgvRoomData.RowHeadersWidth = 51;
             this.dgvRoomData.RowTemplate.Height = 27;
+            this.dgvRoomData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRoomData.Size = new System.Drawing.Size(775, 340);
             this.dgvRoomData.TabIndex = 1;
             this.dgvRoomData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRoomData_CellMouseDown);
