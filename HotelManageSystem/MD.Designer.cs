@@ -38,10 +38,6 @@
             this.searchRoomNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.showRoomInformation = new System.Windows.Forms.DataGridView();
-            this.roomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.sureToDelete = new System.Windows.Forms.Button();
             this.deleteRoomNumber = new System.Windows.Forms.TextBox();
@@ -83,6 +79,10 @@
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billManage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.allCounts = new System.Windows.Forms.Label();
+            this.allBill = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.busearchBillAll = new System.Windows.Forms.Button();
             this.searchBillTime = new System.Windows.Forms.Button();
             this.billEndTimeMD = new System.Windows.Forms.DateTimePicker();
@@ -97,10 +97,10 @@
             this.out_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.allBill = new System.Windows.Forms.Label();
-            this.allCounts = new System.Windows.Forms.Label();
+            this.roomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageMD.SuspendLayout();
             this.roomManage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -218,34 +218,6 @@
             this.showRoomInformation.RowTemplate.Height = 27;
             this.showRoomInformation.Size = new System.Drawing.Size(1027, 369);
             this.showRoomInformation.TabIndex = 2;
-            // 
-            // roomID
-            // 
-            this.roomID.DataPropertyName = "room_id";
-            this.roomID.HeaderText = "房号";
-            this.roomID.MinimumWidth = 6;
-            this.roomID.Name = "roomID";
-            // 
-            // roomType
-            // 
-            this.roomType.DataPropertyName = "name";
-            this.roomType.HeaderText = "房间类型";
-            this.roomType.MinimumWidth = 6;
-            this.roomType.Name = "roomType";
-            // 
-            // roomPrice
-            // 
-            this.roomPrice.DataPropertyName = "price";
-            this.roomPrice.HeaderText = "房间价格";
-            this.roomPrice.MinimumWidth = 6;
-            this.roomPrice.Name = "roomPrice";
-            // 
-            // is_full
-            // 
-            this.is_full.DataPropertyName = "is_full";
-            this.is_full.HeaderText = "是否空房";
-            this.is_full.MinimumWidth = 6;
-            this.is_full.Name = "is_full";
             // 
             // groupBox5
             // 
@@ -660,6 +632,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "时间段选择账单";
             // 
+            // allCounts
+            // 
+            this.allCounts.AutoSize = true;
+            this.allCounts.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.allCounts.Location = new System.Drawing.Point(838, 59);
+            this.allCounts.Name = "allCounts";
+            this.allCounts.Size = new System.Drawing.Size(83, 26);
+            this.allCounts.TabIndex = 9;
+            this.allCounts.Text = "label13";
+            // 
+            // allBill
+            // 
+            this.allBill.AutoSize = true;
+            this.allBill.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.allBill.Location = new System.Drawing.Point(838, 21);
+            this.allBill.Name = "allBill";
+            this.allBill.Size = new System.Drawing.Size(83, 26);
+            this.allBill.TabIndex = 9;
+            this.allBill.Text = "label13";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(738, 59);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(107, 26);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "总订单数：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(738, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 26);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "  总收入：";
+            // 
             // busearchBillAll
             // 
             this.busearchBillAll.Location = new System.Drawing.Point(928, 113);
@@ -790,45 +802,33 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "—";
             // 
-            // label6
+            // roomID
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(738, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 26);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "  总收入：";
+            this.roomID.DataPropertyName = "room_id";
+            this.roomID.HeaderText = "房号";
+            this.roomID.MinimumWidth = 6;
+            this.roomID.Name = "roomID";
             // 
-            // label12
+            // roomType
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(738, 59);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(107, 26);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "总订单数：";
+            this.roomType.DataPropertyName = "name";
+            this.roomType.HeaderText = "房间类型";
+            this.roomType.MinimumWidth = 6;
+            this.roomType.Name = "roomType";
             // 
-            // allBill
+            // roomPrice
             // 
-            this.allBill.AutoSize = true;
-            this.allBill.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.allBill.Location = new System.Drawing.Point(838, 21);
-            this.allBill.Name = "allBill";
-            this.allBill.Size = new System.Drawing.Size(83, 26);
-            this.allBill.TabIndex = 9;
-            this.allBill.Text = "label13";
+            this.roomPrice.DataPropertyName = "price";
+            this.roomPrice.HeaderText = "房间价格";
+            this.roomPrice.MinimumWidth = 6;
+            this.roomPrice.Name = "roomPrice";
             // 
-            // allCounts
+            // is_full
             // 
-            this.allCounts.AutoSize = true;
-            this.allCounts.Font = new System.Drawing.Font("微软雅黑", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.allCounts.Location = new System.Drawing.Point(838, 59);
-            this.allCounts.Name = "allCounts";
-            this.allCounts.Size = new System.Drawing.Size(83, 26);
-            this.allCounts.TabIndex = 9;
-            this.allCounts.Text = "label13";
+            this.is_full.DataPropertyName = "is_full";
+            this.is_full.HeaderText = "已入住";
+            this.is_full.MinimumWidth = 6;
+            this.is_full.Name = "is_full";
             // 
             // MD
             // 
@@ -915,10 +915,6 @@
         private System.Windows.Forms.TextBox addStaffName;
         private System.Windows.Forms.TextBox addStaffAge;
         private System.Windows.Forms.TextBox addStaffPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn is_full;
         private System.Windows.Forms.Button queryRoom;
         private System.Windows.Forms.Button showAllStaff;
         private System.Windows.Forms.DataGridViewTextBoxColumn staff_id;
@@ -941,5 +937,9 @@
         private System.Windows.Forms.Label allBill;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn is_full;
     }
 }

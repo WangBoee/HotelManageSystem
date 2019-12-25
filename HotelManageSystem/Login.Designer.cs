@@ -87,7 +87,7 @@
             this.verInfo.Name = "verInfo";
             this.verInfo.Size = new System.Drawing.Size(71, 15);
             this.verInfo.TabIndex = 3;
-            this.verInfo.Text = "Ver. 0.8";
+            this.verInfo.Text = "Ver. 1.0";
             this.verInfo.Click += new System.EventHandler(this.verInfo_Click);
             // 
             // Login

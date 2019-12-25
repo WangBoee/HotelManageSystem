@@ -246,7 +246,7 @@ namespace QWQ
             }
             else
             {
-                string sqlString = $@"insert Staff values({staffId},'{staffName}',{staffSex},'{staffPos}',{staffAge},'{staffPhone}')";
+                string sqlString = $@"insert Staff values({staffId},N'{staffName}',{staffSex},N'{staffPos}',{staffAge},'{staffPhone}')";
                 SqlConnection conn = new SqlConnection(connString);
                 conn.Open();
                 SqlCommand insertCmd = new SqlCommand(sqlString);

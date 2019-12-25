@@ -27,7 +27,7 @@ namespace HotelManageSystem
             string userPsd = this.psdText.Text.Trim();  //获取输入密码
 
             string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString;
-            string cmdString = $"select level,userN,psd from Login where userN='{userName}' ";
+            string cmdString = $"select level,userN,psd from Login where userN=N'{userName}' ";
             if (userName == "" || userPsd == "")
             {   //用户名或密码为空
                 MessageBox.Show("用户名和密码不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -82,7 +82,7 @@ namespace HotelManageSystem
 
         private void verInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("更新了滑稽图标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("   !!更新了滑稽图标!!\n\n   Author: Boi_Wong\n   Release Ver.1.0.1.3\n\n@Boi All Rights Reserved", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

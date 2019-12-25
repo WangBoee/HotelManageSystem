@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accountant));
             this.label1 = new System.Windows.Forms.Label();
             this.dgvBillData = new System.Windows.Forms.DataGridView();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.other_money = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.searchDate = new System.Windows.Forms.Button();
@@ -44,11 +49,6 @@
             this.counts = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.allBill = new System.Windows.Forms.Label();
-            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.other_money = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillData)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
@@ -82,6 +82,46 @@
             this.dgvBillData.RowTemplate.Height = 27;
             this.dgvBillData.Size = new System.Drawing.Size(842, 355);
             this.dgvBillData.TabIndex = 1;
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "订单号";
+            this.order_id.MinimumWidth = 6;
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            // 
+            // book_time
+            // 
+            this.book_time.DataPropertyName = "book_time";
+            this.book_time.HeaderText = "订单生产日期";
+            this.book_time.MinimumWidth = 6;
+            this.book_time.Name = "book_time";
+            this.book_time.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "总房费";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // deposit
+            // 
+            this.deposit.DataPropertyName = "deposit";
+            this.deposit.HeaderText = "押金";
+            this.deposit.MinimumWidth = 6;
+            this.deposit.Name = "deposit";
+            this.deposit.ReadOnly = true;
+            // 
+            // other_money
+            // 
+            this.other_money.DataPropertyName = "other_money";
+            this.other_money.HeaderText = "其他消费";
+            this.other_money.MinimumWidth = 6;
+            this.other_money.Name = "other_money";
+            this.other_money.ReadOnly = true;
             // 
             // dtpStartTime
             // 
@@ -150,7 +190,7 @@
             this.searchAll.TabIndex = 5;
             this.searchAll.Text = "查询全部";
             this.searchAll.UseVisualStyleBackColor = true;
-            this.searchAll.Click += new System.EventHandler(this.btSearch_Click);
+            this.searchAll.Click += new System.EventHandler(this.searchAll_Click);
             // 
             // label3
             // 
@@ -187,46 +227,6 @@
             this.allBill.Size = new System.Drawing.Size(55, 15);
             this.allBill.TabIndex = 8;
             this.allBill.Text = "label7";
-            // 
-            // order_id
-            // 
-            this.order_id.DataPropertyName = "order_id";
-            this.order_id.HeaderText = "订单号";
-            this.order_id.MinimumWidth = 6;
-            this.order_id.Name = "order_id";
-            this.order_id.ReadOnly = true;
-            // 
-            // book_time
-            // 
-            this.book_time.DataPropertyName = "book_time";
-            this.book_time.HeaderText = "订单生产日期";
-            this.book_time.MinimumWidth = 6;
-            this.book_time.Name = "book_time";
-            this.book_time.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.DataPropertyName = "price";
-            this.price.HeaderText = "总房费";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // deposit
-            // 
-            this.deposit.DataPropertyName = "deposit";
-            this.deposit.HeaderText = "押金";
-            this.deposit.MinimumWidth = 6;
-            this.deposit.Name = "deposit";
-            this.deposit.ReadOnly = true;
-            // 
-            // other_money
-            // 
-            this.other_money.DataPropertyName = "other_money";
-            this.other_money.HeaderText = "其他消费";
-            this.other_money.MinimumWidth = 6;
-            this.other_money.Name = "other_money";
-            this.other_money.ReadOnly = true;
             // 
             // Accountant
             // 

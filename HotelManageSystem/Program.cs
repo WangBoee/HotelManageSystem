@@ -19,7 +19,7 @@ namespace HotelManageSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MD());  //此处可更改默认启动窗体
+            Application.Run(new Accountant());  //此处可更改默认启动窗体
         }
     }
 }

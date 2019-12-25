@@ -63,5 +63,10 @@ namespace Manager
             if (reader.Read())
                 this.allBill.Text = reader.GetSqlDouble(0).ToString();
         }
+
+        private void searchAll_Click(object sender, EventArgs e)
+        {
+            query();
+        }
     }
 }
