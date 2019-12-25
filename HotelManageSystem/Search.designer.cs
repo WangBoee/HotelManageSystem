@@ -52,6 +52,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.inquireDate);
             this.groupBox1.Controls.Add(this.affirmSearchAll);
@@ -59,7 +62,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 70);
+            this.groupBox1.Size = new System.Drawing.Size(763, 89);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "查询条件";
@@ -74,31 +77,33 @@
             "商务间",
             "行政间",
             "所有房间"});
-            this.comboBox1.Location = new System.Drawing.Point(110, 27);
+            this.comboBox1.Location = new System.Drawing.Point(131, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 4;
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.Enter += new System.EventHandler(this.comboBox1_Enter);
+            this.comboBox1.Leave += new System.EventHandler(this.comboBox1_Leave);
             // 
             // inquireDate
             // 
-            this.inquireDate.Location = new System.Drawing.Point(282, 25);
+            this.inquireDate.Location = new System.Drawing.Point(282, 33);
             this.inquireDate.Name = "inquireDate";
             this.inquireDate.Size = new System.Drawing.Size(200, 25);
             this.inquireDate.TabIndex = 3;
             // 
             // affirmSearchAll
             // 
-            this.affirmSearchAll.Location = new System.Drawing.Point(521, 19);
+            this.affirmSearchAll.Location = new System.Drawing.Point(531, 29);
             this.affirmSearchAll.Name = "affirmSearchAll";
             this.affirmSearchAll.Size = new System.Drawing.Size(110, 36);
-            this.affirmSearchAll.TabIndex = 2;
+            this.affirmSearchAll.TabIndex = 1;
             this.affirmSearchAll.Text = "查询所有";
             this.affirmSearchAll.UseVisualStyleBackColor = true;
             this.affirmSearchAll.Click += new System.EventHandler(this.affirmSearchAll_Click);
             // 
             // affirmSearchEmpty
             // 
-            this.affirmSearchEmpty.Location = new System.Drawing.Point(647, 19);
+            this.affirmSearchEmpty.Location = new System.Drawing.Point(647, 29);
             this.affirmSearchEmpty.Name = "affirmSearchEmpty";
             this.affirmSearchEmpty.Size = new System.Drawing.Size(110, 36);
             this.affirmSearchEmpty.TabIndex = 2;
@@ -109,7 +114,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 32);
+            this.label1.Location = new System.Drawing.Point(58, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 1;
@@ -118,6 +123,9 @@
             // dgvRoomData
             // 
             this.dgvRoomData.AllowUserToAddRows = false;
+            this.dgvRoomData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRoomData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoomData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoomData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -142,7 +150,7 @@
             this.dgvRoomData.RowTemplate.Height = 27;
             this.dgvRoomData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRoomData.Size = new System.Drawing.Size(775, 340);
-            this.dgvRoomData.TabIndex = 1;
+            this.dgvRoomData.TabIndex = 3;
             this.dgvRoomData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRoomData_CellMouseDown);
             // 
             // room_id
@@ -209,6 +217,9 @@
             this.Controls.Add(this.dgvRoomData);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(818, 497);
+            this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "Search";
             this.Text = "房间查询";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Search_FormClosed);
@@ -218,6 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoomData)).EndInit();
             this.menuOrder.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -35,18 +35,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.verInfo = new System.Windows.Forms.Label();
+            this.ExitApp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // userText
             // 
-            this.userText.Location = new System.Drawing.Point(171, 70);
+            this.userText.Location = new System.Drawing.Point(153, 70);
             this.userText.Name = "userText";
             this.userText.Size = new System.Drawing.Size(224, 25);
             this.userText.TabIndex = 0;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(214, 183);
+            this.btnLogin.Location = new System.Drawing.Point(166, 183);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(84, 48);
             this.btnLogin.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // psdText
             // 
-            this.psdText.Location = new System.Drawing.Point(171, 123);
+            this.psdText.Location = new System.Drawing.Point(153, 123);
             this.psdText.Name = "psdText";
             this.psdText.PasswordChar = '*';
             this.psdText.Size = new System.Drawing.Size(224, 25);
@@ -65,7 +66,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(113, 73);
+            this.label1.Location = new System.Drawing.Point(95, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 15);
             this.label1.TabIndex = 2;
@@ -74,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 126);
+            this.label2.Location = new System.Drawing.Point(110, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 2;
@@ -83,12 +84,22 @@
             // verInfo
             // 
             this.verInfo.AutoSize = true;
-            this.verInfo.Location = new System.Drawing.Point(409, 256);
+            this.verInfo.Location = new System.Drawing.Point(425, 256);
             this.verInfo.Name = "verInfo";
             this.verInfo.Size = new System.Drawing.Size(71, 15);
             this.verInfo.TabIndex = 3;
             this.verInfo.Text = "Ver. 1.0";
             this.verInfo.Click += new System.EventHandler(this.verInfo_Click);
+            // 
+            // ExitApp
+            // 
+            this.ExitApp.Location = new System.Drawing.Point(274, 183);
+            this.ExitApp.Name = "ExitApp";
+            this.ExitApp.Size = new System.Drawing.Size(84, 48);
+            this.ExitApp.TabIndex = 1;
+            this.ExitApp.Text = "退出";
+            this.ExitApp.UseVisualStyleBackColor = true;
+            this.ExitApp.Click += new System.EventHandler(this.ExitApp_Click);
             // 
             // Login
             // 
@@ -96,6 +107,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 280);
+            this.Controls.Add(this.ExitApp);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.verInfo);
             this.Controls.Add(this.label2);
@@ -104,6 +116,8 @@
             this.Controls.Add(this.psdText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(526, 327);
+            this.MinimumSize = new System.Drawing.Size(526, 327);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
@@ -120,6 +134,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label verInfo;
+        private System.Windows.Forms.Button ExitApp;
     }
 }
 

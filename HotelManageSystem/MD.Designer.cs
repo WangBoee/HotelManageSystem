@@ -38,6 +38,10 @@
             this.searchRoomNumber = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.showRoomInformation = new System.Windows.Forms.DataGridView();
+            this.roomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.sureToDelete = new System.Windows.Forms.Button();
             this.deleteRoomNumber = new System.Windows.Forms.TextBox();
@@ -97,10 +101,6 @@
             this.out_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.roomID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.is_full = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageMD.SuspendLayout();
             this.roomManage.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -120,6 +120,9 @@
             // 
             // manageMD
             // 
+            this.manageMD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.manageMD.Controls.Add(this.roomManage);
             this.manageMD.Controls.Add(this.staffManage);
             this.manageMD.Controls.Add(this.billManage);
@@ -162,7 +165,7 @@
             this.groupBox6.Location = new System.Drawing.Point(741, 24);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(315, 161);
-            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "房间查询";
             // 
@@ -171,7 +174,7 @@
             this.queryRoom.Location = new System.Drawing.Point(101, 107);
             this.queryRoom.Name = "queryRoom";
             this.queryRoom.Size = new System.Drawing.Size(94, 43);
-            this.queryRoom.TabIndex = 10;
+            this.queryRoom.TabIndex = 5;
             this.queryRoom.Text = "查询全部";
             this.queryRoom.UseVisualStyleBackColor = true;
             this.queryRoom.Click += new System.EventHandler(this.queryRoom_Click);
@@ -181,7 +184,7 @@
             this.sureToSearch.Location = new System.Drawing.Point(212, 107);
             this.sureToSearch.Name = "sureToSearch";
             this.sureToSearch.Size = new System.Drawing.Size(88, 43);
-            this.sureToSearch.TabIndex = 5;
+            this.sureToSearch.TabIndex = 6;
             this.sureToSearch.Text = "确认";
             this.sureToSearch.UseVisualStyleBackColor = true;
             this.sureToSearch.Click += new System.EventHandler(this.sureToSearch_Click);
@@ -191,7 +194,9 @@
             this.searchRoomNumber.Location = new System.Drawing.Point(112, 32);
             this.searchRoomNumber.Name = "searchRoomNumber";
             this.searchRoomNumber.Size = new System.Drawing.Size(121, 25);
-            this.searchRoomNumber.TabIndex = 9;
+            this.searchRoomNumber.TabIndex = 2;
+            this.searchRoomNumber.Enter += new System.EventHandler(this.searchRoomNumber_Enter);
+            this.searchRoomNumber.Leave += new System.EventHandler(this.searchRoomNumber_Leave);
             // 
             // label7
             // 
@@ -217,7 +222,35 @@
             this.showRoomInformation.RowHeadersWidth = 51;
             this.showRoomInformation.RowTemplate.Height = 27;
             this.showRoomInformation.Size = new System.Drawing.Size(1027, 369);
-            this.showRoomInformation.TabIndex = 2;
+            this.showRoomInformation.TabIndex = 7;
+            // 
+            // roomID
+            // 
+            this.roomID.DataPropertyName = "room_id";
+            this.roomID.HeaderText = "房号";
+            this.roomID.MinimumWidth = 6;
+            this.roomID.Name = "roomID";
+            // 
+            // roomType
+            // 
+            this.roomType.DataPropertyName = "name";
+            this.roomType.HeaderText = "房间类型";
+            this.roomType.MinimumWidth = 6;
+            this.roomType.Name = "roomType";
+            // 
+            // roomPrice
+            // 
+            this.roomPrice.DataPropertyName = "price";
+            this.roomPrice.HeaderText = "房间价格";
+            this.roomPrice.MinimumWidth = 6;
+            this.roomPrice.Name = "roomPrice";
+            // 
+            // is_full
+            // 
+            this.is_full.DataPropertyName = "is_full";
+            this.is_full.HeaderText = "已入住";
+            this.is_full.MinimumWidth = 6;
+            this.is_full.Name = "is_full";
             // 
             // groupBox5
             // 
@@ -227,7 +260,7 @@
             this.groupBox5.Location = new System.Drawing.Point(431, 24);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(289, 161);
-            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "删除房间";
             // 
@@ -236,7 +269,7 @@
             this.sureToDelete.Location = new System.Drawing.Point(189, 107);
             this.sureToDelete.Name = "sureToDelete";
             this.sureToDelete.Size = new System.Drawing.Size(82, 44);
-            this.sureToDelete.TabIndex = 1;
+            this.sureToDelete.TabIndex = 4;
             this.sureToDelete.Text = "确定";
             this.sureToDelete.UseVisualStyleBackColor = true;
             this.sureToDelete.Click += new System.EventHandler(this.sureToDelete_Click);
@@ -276,7 +309,7 @@
             this.sureToAdd.Location = new System.Drawing.Point(280, 108);
             this.sureToAdd.Name = "sureToAdd";
             this.sureToAdd.Size = new System.Drawing.Size(85, 44);
-            this.sureToAdd.TabIndex = 0;
+            this.sureToAdd.TabIndex = 2;
             this.sureToAdd.Text = "确认";
             this.sureToAdd.UseVisualStyleBackColor = true;
             this.sureToAdd.Click += new System.EventHandler(this.sureToAdd_Click);
@@ -293,14 +326,14 @@
             this.addRoomType.Location = new System.Drawing.Point(115, 94);
             this.addRoomType.Name = "addRoomType";
             this.addRoomType.Size = new System.Drawing.Size(121, 23);
-            this.addRoomType.TabIndex = 3;
+            this.addRoomType.TabIndex = 1;
             // 
             // addRoomNumber
             // 
             this.addRoomNumber.Location = new System.Drawing.Point(115, 39);
             this.addRoomNumber.Name = "addRoomNumber";
             this.addRoomNumber.Size = new System.Drawing.Size(121, 25);
-            this.addRoomNumber.TabIndex = 4;
+            this.addRoomNumber.TabIndex = 0;
             // 
             // label4
             // 
@@ -361,7 +394,7 @@
             this.groupBox8.Location = new System.Drawing.Point(402, 24);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(658, 164);
-            this.groupBox8.TabIndex = 6;
+            this.groupBox8.TabIndex = 5;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "添加员工";
             // 
@@ -375,7 +408,7 @@
             this.addStaffPos.Location = new System.Drawing.Point(103, 79);
             this.addStaffPos.Name = "addStaffPos";
             this.addStaffPos.Size = new System.Drawing.Size(107, 23);
-            this.addStaffPos.TabIndex = 2;
+            this.addStaffPos.TabIndex = 8;
             // 
             // addStaffSex
             // 
@@ -386,14 +419,14 @@
             this.addStaffSex.Location = new System.Drawing.Point(502, 32);
             this.addStaffSex.Name = "addStaffSex";
             this.addStaffSex.Size = new System.Drawing.Size(136, 23);
-            this.addStaffSex.TabIndex = 2;
+            this.addStaffSex.TabIndex = 7;
             // 
             // sureToAddStaff
             // 
             this.sureToAddStaff.Location = new System.Drawing.Point(523, 114);
             this.sureToAddStaff.Name = "sureToAddStaff";
             this.sureToAddStaff.Size = new System.Drawing.Size(100, 44);
-            this.sureToAddStaff.TabIndex = 2;
+            this.sureToAddStaff.TabIndex = 11;
             this.sureToAddStaff.Text = "添加";
             this.sureToAddStaff.UseVisualStyleBackColor = true;
             this.sureToAddStaff.Click += new System.EventHandler(this.sureToAddStaff_Click);
@@ -403,28 +436,30 @@
             this.addStaffPhone.Location = new System.Drawing.Point(502, 77);
             this.addStaffPhone.Name = "addStaffPhone";
             this.addStaffPhone.Size = new System.Drawing.Size(136, 25);
-            this.addStaffPhone.TabIndex = 2;
+            this.addStaffPhone.TabIndex = 10;
+            this.addStaffPhone.Enter += new System.EventHandler(this.addStaffPhone_Enter);
+            this.addStaffPhone.Leave += new System.EventHandler(this.addStaffPhone_Leave);
             // 
             // addStaffAge
             // 
             this.addStaffAge.Location = new System.Drawing.Point(305, 77);
             this.addStaffAge.Name = "addStaffAge";
             this.addStaffAge.Size = new System.Drawing.Size(100, 25);
-            this.addStaffAge.TabIndex = 2;
+            this.addStaffAge.TabIndex = 9;
             // 
             // addStaffName
             // 
             this.addStaffName.Location = new System.Drawing.Point(305, 33);
             this.addStaffName.Name = "addStaffName";
             this.addStaffName.Size = new System.Drawing.Size(100, 25);
-            this.addStaffName.TabIndex = 2;
+            this.addStaffName.TabIndex = 6;
             // 
             // addStaffNumber
             // 
             this.addStaffNumber.Location = new System.Drawing.Point(103, 33);
             this.addStaffNumber.Name = "addStaffNumber";
             this.addStaffNumber.Size = new System.Drawing.Size(107, 25);
-            this.addStaffNumber.TabIndex = 2;
+            this.addStaffNumber.TabIndex = 5;
             // 
             // label15
             // 
@@ -491,7 +526,7 @@
             this.groupBox7.Location = new System.Drawing.Point(31, 24);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(353, 164);
-            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "员工操作";
             // 
@@ -500,7 +535,7 @@
             this.showAllStaff.Location = new System.Drawing.Point(233, 104);
             this.showAllStaff.Name = "showAllStaff";
             this.showAllStaff.Size = new System.Drawing.Size(102, 37);
-            this.showAllStaff.TabIndex = 2;
+            this.showAllStaff.TabIndex = 4;
             this.showAllStaff.Text = "显示全部";
             this.showAllStaff.UseVisualStyleBackColor = true;
             this.showAllStaff.Click += new System.EventHandler(this.showAllStaff_Click);
@@ -510,7 +545,7 @@
             this.sureToDeleteStaff.Location = new System.Drawing.Point(125, 104);
             this.sureToDeleteStaff.Name = "sureToDeleteStaff";
             this.sureToDeleteStaff.Size = new System.Drawing.Size(102, 37);
-            this.sureToDeleteStaff.TabIndex = 2;
+            this.sureToDeleteStaff.TabIndex = 3;
             this.sureToDeleteStaff.Text = "删除";
             this.sureToDeleteStaff.UseVisualStyleBackColor = true;
             this.sureToDeleteStaff.Click += new System.EventHandler(this.sureToDeleteStaff_Click);
@@ -530,7 +565,7 @@
             this.searchStaffNumber.Location = new System.Drawing.Point(106, 36);
             this.searchStaffNumber.Name = "searchStaffNumber";
             this.searchStaffNumber.Size = new System.Drawing.Size(192, 25);
-            this.searchStaffNumber.TabIndex = 3;
+            this.searchStaffNumber.TabIndex = 1;
             // 
             // label8
             // 
@@ -558,7 +593,7 @@
             this.showStaff.RowHeadersWidth = 51;
             this.showStaff.RowTemplate.Height = 27;
             this.showStaff.Size = new System.Drawing.Size(1029, 367);
-            this.showStaff.TabIndex = 0;
+            this.showStaff.TabIndex = 12;
             // 
             // staff_id
             // 
@@ -735,7 +770,7 @@
             this.showBillMD.RowHeadersWidth = 51;
             this.showBillMD.RowTemplate.Height = 27;
             this.showBillMD.Size = new System.Drawing.Size(1069, 412);
-            this.showBillMD.TabIndex = 5;
+            this.showBillMD.TabIndex = 3;
             // 
             // order_id
             // 
@@ -802,42 +837,17 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "—";
             // 
-            // roomID
-            // 
-            this.roomID.DataPropertyName = "room_id";
-            this.roomID.HeaderText = "房号";
-            this.roomID.MinimumWidth = 6;
-            this.roomID.Name = "roomID";
-            // 
-            // roomType
-            // 
-            this.roomType.DataPropertyName = "name";
-            this.roomType.HeaderText = "房间类型";
-            this.roomType.MinimumWidth = 6;
-            this.roomType.Name = "roomType";
-            // 
-            // roomPrice
-            // 
-            this.roomPrice.DataPropertyName = "price";
-            this.roomPrice.HeaderText = "房间价格";
-            this.roomPrice.MinimumWidth = 6;
-            this.roomPrice.Name = "roomPrice";
-            // 
-            // is_full
-            // 
-            this.is_full.DataPropertyName = "is_full";
-            this.is_full.HeaderText = "已入住";
-            this.is_full.MinimumWidth = 6;
-            this.is_full.Name = "is_full";
-            // 
             // MD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1103, 631);
             this.Controls.Add(this.manageMD);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1121, 678);
             this.Name = "MD";
             this.Text = "全局管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MD_FormClosed);

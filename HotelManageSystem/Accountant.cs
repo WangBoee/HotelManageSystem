@@ -44,7 +44,7 @@ namespace Manager
 
         private void Accountant_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
 
         private void Accountant_Load(object sender, EventArgs e)

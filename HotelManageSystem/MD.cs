@@ -29,7 +29,7 @@ namespace QWQ
 
         private void MD_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
 
         private void queryAll(string queryString = " ", int type = 0)
@@ -87,20 +87,16 @@ namespace QWQ
             reader = cmd.ExecuteReader();
             if (reader.Read())
                 this.allBill.Text = reader.GetSqlDouble(0).ToString();
-            /*
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(sqlString, conn);
-            DataSet dataSet = new DataSet();
-            sda.Fill(dataSet);
-            this.showRoomInformation.DataSource = dataSet.Tables[0];
-            conn.Close();
-            */
         }
 
         private void sureToDelete_Click(object sender, EventArgs e)
         {
-            int roomId = Int32.Parse(this.deleteRoomNumber.Text.Trim());
+            int roomId = this.deleteRoomNumber.Text.Trim() == "" ? -1 : Int32.Parse(this.deleteRoomNumber.Text.Trim());
+            if (roomId == -1)
+            {
+                MessageBox.Show("请输入房号!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             SqlConnection conn = new SqlConnection(connString);
             string sqlString = $@"delete from Room where room_id={roomId}";
             try
@@ -127,16 +123,18 @@ namespace QWQ
             {
                 conn.Close();
             }
+            this.deleteRoomNumber.Text = "";
         }
 
         private void sureToAdd_Click(object sender, EventArgs e)
         {
             int roomType = this.addRoomType.SelectedIndex;
             //MessageBox.Show(roomType.ToString());   //test
-            int roomId = Int32.Parse(this.addRoomNumber.Text.Trim());
-            if (this.addRoomType.Text == "")
+            int roomId = this.addRoomNumber.Text.Trim() == "" ? -1 : Int32.Parse(this.addRoomNumber.Text.Trim());
+            if (this.addRoomType.Text == "" || roomId == -1)
             {
-                MessageBox.Show("请选择房间类型!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("未输入房号或选择房间类型!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             else
             {
@@ -151,43 +149,25 @@ namespace QWQ
                     MD_Load(sender, e);
                 }
             }
+            this.addRoomNumber.Text = "";
         }
 
         private void sureToSearch_Click(object sender, EventArgs e)
         {
-            int roomId = Int32.Parse(this.searchRoomNumber.Text.Trim());
+            int roomId = this.searchRoomNumber.Text.Trim() == "" ? -1 : Int32.Parse(this.searchRoomNumber.Text.Trim());
+            if (roomId == -1)
+            {
+                MessageBox.Show("请输入房号!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string queryString = sqlRoomString + $"and room_id={roomId}";
             queryAll(queryString);
-            /*
-            try
-            {
-                SqlConnection conn = new SqlConnection(connString);
-                conn.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(queryString, conn);
-                DataSet dataSet = new DataSet();
-                sda.Fill(dataSet);
-                this.showRoomInformation.DataSource = dataSet.Tables[0];
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            */
         }
 
         private void queryRoom_Click(object sender, EventArgs e)
         {
             queryAll();
         }
-
-        //private void groupBox3_Enter(object sender, EventArgs e)
-        //{
-        //    //int staffId = Int32.Parse(this.searchStaffNumber.Text.Trim());
-        //    //this.addStaffSex.SelectedIndex = 0;
-        //    //this.addStaffPos.SelectedIndex = 0;
-        //    //string queryStaff = sqlStaffString;
-        //    //queryAll(queryStaff, 1);
-        //}
 
         private void showAllStaff_Click(object sender, EventArgs e)
         {
@@ -196,14 +176,24 @@ namespace QWQ
 
         private void sureToSearchStaff_Click(object sender, EventArgs e)
         {
-            int staffId = Int32.Parse(this.searchStaffNumber.Text.Trim());
+            int staffId = this.searchStaffNumber.Text.Trim() == "" ? -1 : Int32.Parse(this.searchStaffNumber.Text.Trim());
+            if (staffId == -1)
+            {
+                MessageBox.Show("请输入员工号!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             string queryStaff = sqlStaffString + $" where staff_id = {staffId}";
             queryAll(queryStaff, 1);
         }
 
         private void sureToDeleteStaff_Click(object sender, EventArgs e)
         {
-            int staffId = Int32.Parse(this.searchStaffNumber.Text.Trim());
+            int staffId = this.searchStaffNumber.Text.Trim() == "" ? -1 : Int32.Parse(this.searchStaffNumber.Text.Trim());
+            if (staffId == -1)
+            {
+                MessageBox.Show("请输入员工号!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             SqlConnection conn = new SqlConnection(connString);
             string sqlString = $@"delete from Staff where staff_id={staffId}";
             try
@@ -229,6 +219,7 @@ namespace QWQ
             {
                 conn.Close();
             }
+            this.searchStaffNumber.Text = "";
         }
 
         private void sureToAddStaff_Click(object sender, EventArgs e)
@@ -257,6 +248,10 @@ namespace QWQ
                     queryAll(sqlStaffString, 1);
                 }
             }
+            this.addStaffName.Text = "";
+            this.addStaffAge.Text = "";
+            this.addStaffNumber.Text = "";
+            this.addStaffPhone.Text = "";
         }
 
         private void busearchBillAll_Click(object sender, EventArgs e)
@@ -272,13 +267,28 @@ namespace QWQ
 
         private void searchBillTime_Click(object sender, EventArgs e)
         {
-            string str =sqlOrdersString+ $" where book_time between '{ this.billBeginTimeMD.Value.ToString("yyyy/MM/dd")}' and '{ this.billEndTimeMD.Value.ToString("yyyy/MM/dd")}'";
-            queryAll(str,2);
+            string str = sqlOrdersString + $" where book_time between '{ this.billBeginTimeMD.Value.ToString("yyyy/MM/dd")}' and '{ this.billEndTimeMD.Value.ToString("yyyy/MM/dd")}'";
+            queryAll(str, 2);
         }
 
-        //private void groupBox1_Enter(object sender, EventArgs e)
-        //{
-        //    queryAll(sqlOrdersString, 2);
-        //}
+        private void searchRoomNumber_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.sureToSearchStaff;
+        }
+
+        private void searchRoomNumber_Leave(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
+        }
+
+        private void addStaffPhone_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.sureToAddStaff;
+        }
+
+        private void addStaffPhone_Leave(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
+        }
     }
 }

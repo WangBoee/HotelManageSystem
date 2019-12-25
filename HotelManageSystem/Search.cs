@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Manager;
 using System.Configuration;
+using HotelManageSystem;
 
 namespace QWQ
 {
@@ -23,13 +24,14 @@ namespace QWQ
 
         //整表查询语句，查询函数参数添加条件
         private string sqlString = "select room_id, Room_type.name, price, is_full, deposit from Room, Room_type where Room_type.room_type_id=Room.type_id ";
-        private string sqlConnStr = HotelManageSystem.Properties.Settings.Default.ConnectionString;
+        private string sqlConnStr = HotelManageSystem.Properties.Settings.Default.ConnectionString; //数据库连接字符串
+
         /// <summary>
         /// 查询函数. 
         /// 带默认参数，默认查询整张表
         /// 参数为查询条件
         /// </summary>
-        /// <param name="queryString"></param>
+        /// <param name="queryString">查询条件，默认值为“ ”，即无条件查询</param>
         private void queryAll(string queryString = " ")
         {
             if (queryString == " ")
@@ -48,14 +50,18 @@ namespace QWQ
             //
         }
 
+        /// <summary>
+        /// 公有方法，可供其他窗体调用
+        /// 用于更新当前窗体数据
+        /// 即调用默认查询函数
+        /// </summary>
         public void Ord_updateQue()
         {
             queryAll();
-            //throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 按条件查询空房
+        /// 按房间类型查询空房
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -71,7 +77,7 @@ namespace QWQ
         }
 
         /// <summary>
-        /// 按条件查询所有房间，包括空房
+        /// 按房间类型查询所有房间，包括空房
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -130,10 +136,22 @@ namespace QWQ
             
         }
 
-        //关闭窗体，结束整个程序
+        //关闭窗体，回到登录界面
         private void Search_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
+        }
+
+        //当下拉框获得焦点时，按下Enter可执行affirmSearchEmpty方法
+        private void comboBox1_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = affirmSearchEmpty;
+        }
+
+        //当下拉框失去焦点时，按下Enter无效，与上方函数配对使用
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
         }
     }
 }

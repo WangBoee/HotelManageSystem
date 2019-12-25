@@ -39,6 +39,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.otherMoney = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.isVIP = new System.Windows.Forms.CheckBox();
             this.newPredeterminationName = new System.Windows.Forms.TextBox();
             this.newPhoneNumber = new System.Windows.Forms.TextBox();
@@ -53,8 +55,6 @@
             this.checkInTime = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.otherMoney = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -169,9 +169,25 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 189);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(885, 285);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "新房间";
+            // 
+            // otherMoney
+            // 
+            this.otherMoney.Location = new System.Drawing.Point(597, 164);
+            this.otherMoney.Name = "otherMoney";
+            this.otherMoney.Size = new System.Drawing.Size(200, 25);
+            this.otherMoney.TabIndex = 7;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(495, 167);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 15);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "其他消费";
             // 
             // isVIP
             // 
@@ -179,7 +195,7 @@
             this.isVIP.Location = new System.Drawing.Point(167, 234);
             this.isVIP.Name = "isVIP";
             this.isVIP.Size = new System.Drawing.Size(83, 19);
-            this.isVIP.TabIndex = 18;
+            this.isVIP.TabIndex = 4;
             this.isVIP.Text = "是否VIP";
             this.isVIP.UseVisualStyleBackColor = true;
             // 
@@ -188,21 +204,21 @@
             this.newPredeterminationName.Location = new System.Drawing.Point(167, 55);
             this.newPredeterminationName.Name = "newPredeterminationName";
             this.newPredeterminationName.Size = new System.Drawing.Size(263, 25);
-            this.newPredeterminationName.TabIndex = 17;
+            this.newPredeterminationName.TabIndex = 1;
             // 
             // newPhoneNumber
             // 
             this.newPhoneNumber.Location = new System.Drawing.Point(167, 109);
             this.newPhoneNumber.Name = "newPhoneNumber";
             this.newPhoneNumber.Size = new System.Drawing.Size(263, 25);
-            this.newPhoneNumber.TabIndex = 16;
+            this.newPhoneNumber.TabIndex = 2;
             // 
             // newIDNumber
             // 
             this.newIDNumber.Location = new System.Drawing.Point(167, 164);
             this.newIDNumber.Name = "newIDNumber";
             this.newIDNumber.Size = new System.Drawing.Size(263, 25);
-            this.newIDNumber.TabIndex = 15;
+            this.newIDNumber.TabIndex = 3;
             // 
             // label7
             // 
@@ -236,13 +252,14 @@
             this.btnOrder.Location = new System.Drawing.Point(584, 234);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(122, 33);
-            this.btnOrder.TabIndex = 9;
+            this.btnOrder.TabIndex = 8;
             this.btnOrder.Text = "确定";
             this.btnOrder.UseVisualStyleBackColor = true;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnClose
             // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnClose.Location = new System.Drawing.Point(738, 234);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(122, 33);
@@ -266,7 +283,7 @@
             this.checkOutTime.Location = new System.Drawing.Point(597, 109);
             this.checkOutTime.Name = "checkOutTime";
             this.checkOutTime.Size = new System.Drawing.Size(200, 25);
-            this.checkOutTime.TabIndex = 7;
+            this.checkOutTime.TabIndex = 6;
             // 
             // checkInTime
             // 
@@ -274,7 +291,7 @@
             this.checkInTime.Location = new System.Drawing.Point(597, 55);
             this.checkInTime.Name = "checkInTime";
             this.checkInTime.Size = new System.Drawing.Size(200, 25);
-            this.checkInTime.TabIndex = 6;
+            this.checkInTime.TabIndex = 5;
             // 
             // label8
             // 
@@ -293,30 +310,18 @@
             this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 0;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(495, 167);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "其他消费";
-            // 
-            // otherMoney
-            // 
-            this.otherMoney.Location = new System.Drawing.Point(597, 164);
-            this.otherMoney.Name = "otherMoney";
-            this.otherMoney.Size = new System.Drawing.Size(200, 25);
-            this.otherMoney.TabIndex = 20;
-            // 
             // OrderRoom
             // 
+            this.AcceptButton = this.btnOrder;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 486);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(927, 533);
+            this.MinimumSize = new System.Drawing.Size(927, 533);
             this.Name = "OrderRoom";
             this.Text = "订房";
             this.Load += new System.EventHandler(this.OrderRoom_Load);

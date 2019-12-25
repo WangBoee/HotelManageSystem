@@ -11,25 +11,28 @@ using System.Data.SqlClient;
 
 namespace QWQ
 {
-    //public DataRow rowDataFrom = null;
     public partial class OrderRoom : Form
     {
         public OrderRoom()
         {
             InitializeComponent();
         }
-        Search sr;
-        public DataGridViewRow dataViewRow;
+
+        Search sr;  //用于接入上一窗体，实现刷新数据功能
+
+        public DataGridViewRow dataViewRow; //扩大数据行作用域
+
         /// <summary>
         /// 重载构造函数
         /// 通过上一窗体传入的单行数据确定此窗体控件属性
         /// </summary>
-        /// <param name="dataRow"></param>
+        /// <param name="dataRow">上一窗体选中数据行</param>
+        /// <param name="order">上一窗体实例</param>
         public OrderRoom(DataGridViewRow dataRow, Search order)
         {
             InitializeComponent();
             dataViewRow = dataRow;
-            sr = order;
+            sr = order; //赋值
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -104,7 +107,13 @@ namespace QWQ
             {   //捕获异常, 弹窗提示异常信息
                 MessageBox.Show(ee.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sr.Ord_updateQue();
+            sr.Ord_updateQue(); //更新Search中数据表的数据
+            //订房成功后，以下清除输入框信息
+            this.newPredeterminationName.Text = "";
+            this.newPhoneNumber.Text = "";
+            this.newIDNumber.Text = "";
+            this.otherMoney.Text = "";
+            this.isVIP.Checked = false;
         }
 
         private void OrderRoom_Load(object sender, EventArgs e)
