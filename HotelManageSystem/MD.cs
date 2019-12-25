@@ -74,6 +74,19 @@ namespace QWQ
             queryAll();
             queryAll(sqlStaffString, 1);
             queryAll(sqlOrdersString, 2);
+
+            string str = "select count(order_id) from Orders";
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(str, conn);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+                this.allCounts.Text = reader.GetInt32(0).ToString();
+            cmd.CommandText = "select sum(price+other_money) from Orders";
+            reader.Close();
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+                this.allBill.Text = reader.GetSqlDouble(0).ToString();
             /*
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
@@ -259,7 +272,8 @@ namespace QWQ
 
         private void searchBillTime_Click(object sender, EventArgs e)
         {
-
+            string str =sqlOrdersString+ $" where book_time between '{ this.billBeginTimeMD.Value.ToString("yyyy/MM/dd")}' and '{ this.billEndTimeMD.Value.ToString("yyyy/MM/dd")}'";
+            queryAll(str,2);
         }
 
         //private void groupBox1_Enter(object sender, EventArgs e)

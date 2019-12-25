@@ -14,7 +14,7 @@ using System.Configuration;
 namespace QWQ
 {
     public partial class Search : Form
-    {   
+    {
         //默认构造函数
         public Search()
         {
@@ -23,7 +23,7 @@ namespace QWQ
 
         //整表查询语句，查询函数参数添加条件
         private string sqlString = "select room_id, Room_type.name, price, is_full, deposit from Room, Room_type where Room_type.room_type_id=Room.type_id ";
-        private string sqlConnStr= HotelManageSystem.Properties.Settings.Default.ConnectionString;
+        private string sqlConnStr = HotelManageSystem.Properties.Settings.Default.ConnectionString;
         /// <summary>
         /// 查询函数. 
         /// 带默认参数，默认查询整张表
@@ -46,6 +46,12 @@ namespace QWQ
             this.dgvRoomData.DataSource = dataSet.Tables[0];    //列出返回的数据
             queryConn.Close();  //关闭连接
             //
+        }
+
+        public void Ord_updateQue()
+        {
+            queryAll();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -118,9 +124,10 @@ namespace QWQ
             {   //空房
                 DataGridViewRow transDataRow = dgvRoomData.CurrentRow;  //取出当前选中行数据
                 //MessageBox.Show(transDataRow.Cells[0].Value.ToString());  //test
-                OrderRoom orderRoom = new OrderRoom(transDataRow);  //创建并初始化下单窗体，并将当前行数据作为参数传给窗体
+                OrderRoom orderRoom = new OrderRoom(transDataRow,this);  //创建并初始化下单窗体，并将当前行数据作为参数传给窗体
                 orderRoom.ShowDialog(); //显示窗体
             }
+            
         }
 
         //关闭窗体，结束整个程序

@@ -38,8 +38,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchAll = new System.Windows.Forms.Button();
+            this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.counts = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.allBill = new System.Windows.Forms.Label();
+            this.order_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deposit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.other_money = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillData)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
@@ -57,8 +66,15 @@
             // 
             // dgvBillData
             // 
+            this.dgvBillData.AllowUserToAddRows = false;
             this.dgvBillData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBillData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBillData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.order_id,
+            this.book_time,
+            this.price,
+            this.deposit,
+            this.other_money});
             this.dgvBillData.Location = new System.Drawing.Point(6, 110);
             this.dgvBillData.MultiSelect = false;
             this.dgvBillData.Name = "dgvBillData";
@@ -136,17 +152,98 @@
             this.searchAll.UseVisualStyleBackColor = true;
             this.searchAll.Click += new System.EventHandler(this.btSearch_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 550);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "总单数：";
+            // 
+            // counts
+            // 
+            this.counts.AutoSize = true;
+            this.counts.Location = new System.Drawing.Point(123, 550);
+            this.counts.Name = "counts";
+            this.counts.Size = new System.Drawing.Size(55, 15);
+            this.counts.TabIndex = 6;
+            this.counts.Text = "label4";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(409, 550);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "总收入：";
+            // 
+            // allBill
+            // 
+            this.allBill.AutoSize = true;
+            this.allBill.Location = new System.Drawing.Point(482, 550);
+            this.allBill.Name = "allBill";
+            this.allBill.Size = new System.Drawing.Size(55, 15);
+            this.allBill.TabIndex = 8;
+            this.allBill.Text = "label7";
+            // 
+            // order_id
+            // 
+            this.order_id.DataPropertyName = "order_id";
+            this.order_id.HeaderText = "订单号";
+            this.order_id.MinimumWidth = 6;
+            this.order_id.Name = "order_id";
+            this.order_id.ReadOnly = true;
+            // 
+            // book_time
+            // 
+            this.book_time.DataPropertyName = "book_time";
+            this.book_time.HeaderText = "订单生产日期";
+            this.book_time.MinimumWidth = 6;
+            this.book_time.Name = "book_time";
+            this.book_time.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "总房费";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // deposit
+            // 
+            this.deposit.DataPropertyName = "deposit";
+            this.deposit.HeaderText = "押金";
+            this.deposit.MinimumWidth = 6;
+            this.deposit.Name = "deposit";
+            this.deposit.ReadOnly = true;
+            // 
+            // other_money
+            // 
+            this.other_money.DataPropertyName = "other_money";
+            this.other_money.HeaderText = "其他消费";
+            this.other_money.MinimumWidth = 6;
+            this.other_money.Name = "other_money";
+            this.other_money.ReadOnly = true;
+            // 
             // Accountant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 537);
+            this.ClientSize = new System.Drawing.Size(878, 589);
+            this.Controls.Add(this.allBill);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.counts);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Accountant";
             this.Text = "账单";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Accountant_FormClosed);
+            this.Load += new System.EventHandler(this.Accountant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillData)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -167,6 +264,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.BindingSource staffBindingSource;
         private System.Windows.Forms.Button searchAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn book_time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deposit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn other_money;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label counts;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label allBill;
     }
 }
 
