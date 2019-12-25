@@ -20,8 +20,11 @@ namespace HotelManageSystem
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {   //按下登录按钮
-            if (this.userText.Text.Trim() == "" || this.psdText.Text.Trim() == "")
+        {
+            string userName = this.userText.Text.Trim();    //获取输入用户名
+            string userPsd = this.psdText.Text.Trim();  //获取输入密码
+            //按下登录按钮
+            if (userName == "" || userPsd == "")
             {   //用户名或密码为空
                 MessageBox.Show("用户名和密码不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

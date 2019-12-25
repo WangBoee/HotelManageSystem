@@ -18,7 +18,7 @@ namespace QWQ
             InitializeComponent();
         }
 
-        string connString = @"Data Source=BOI\SQLEXPRESS;Initial Catalog=HotelDB;Integrated Security=True;Pooling=False";
+        string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString;
 
         string sqlRoomString = @"select room_id, name, price, is_full from Room,Room_type 
                                               where Room_type.room_type_id=Room.type_id ";
@@ -41,7 +41,7 @@ namespace QWQ
                 SqlDataAdapter sda = new SqlDataAdapter(queryString, queryConn);    //执行查询语句
                 DataSet dataSet = new DataSet();    //创建并实例化数据集对象(本地微型数据库), 用于存储查询返回的数据
                 sda.Fill(dataSet);  //查询结果填充到dataSet中
-                                    //dataSet中的第一张表即为返回的数据表，作为数据表显示控件的数据源
+                //根据参数确定更新的数据
                 switch (type)
                 {
                     case 0:
@@ -63,8 +63,6 @@ namespace QWQ
             {
                 queryConn.Close();  //关闭连接
             }
-
-            ///
         }
 
         private void MD_Load(object sender, EventArgs e)

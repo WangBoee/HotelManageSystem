@@ -20,10 +20,12 @@ namespace HotelManageSystem
             InitializeComponent();
         }
 
+        string sqlStr = HotelManageSystem.Properties.Settings.Default.ConnectionString;
+
         private void query(string sqlCmd0 = "")
         {
             string sqlCmd = @"select * from testTable";
-            string sqlStr = @"Data Source=BOI\SQLEXPRESS;Initial Catalog=HotelDB;Integrated Security=True;Pooling=False";
+
             if (sqlCmd0 != "")
                 sqlCmd += sqlCmd0;
 
@@ -60,10 +62,10 @@ namespace HotelManageSystem
 
         private void updateData_Click(object sender, EventArgs e)
         {
-            int num = 6;
+            int num = 5;
             string sqlCmd = $@"update testTable set testBool=0 where testNum={num}";    //测试，带参查询
 
-            string sqlStr = @"Data Source=BOI\SQLEXPRESS;Initial Catalog=HotelDB;Integrated Security=True;Pooling=False";
+            string sqlStr = HotelManageSystem.Properties.Settings.Default.ConnectionString;
 
             SqlConnection sqlConnection = new SqlConnection(sqlStr);
             sqlConnection.Open();
@@ -74,12 +76,38 @@ namespace HotelManageSystem
             if (i > 0)
             {
                 MessageBox.Show("ok");
-                sqlCommand.CommandText = "update testTable set testBool=1 where testNum=10";    //test, query multi sql commands
+                sqlCommand.CommandText = "update testTable set testBool=1 where testNum=6";    //test, query multi sql commands
                 i = sqlCommand.ExecuteNonQuery();   //exe with the num of changed line(s)
                 sqlCommand.Connection = sqlConnection;
                 MessageBox.Show(i.ToString(), "info");
+                query();
             }
             sqlConnection.Close();
+        }
+
+        private void Test_Click(object sender, EventArgs e)
+        {
+            //    int i = this.DatePickEnd.Value.DayOfYear - this.DatePickStart.Value.DayOfYear;
+            //    MessageBox.Show(i.ToString());
+            //string insrt = "insert testTable values(getdate(),getdate(),'abcd',123,1) ";
+            //SqlConnection sqlConnection = new SqlConnection(sqlStr);
+            //sqlConnection.Open();
+
+            //SqlCommand sqlCommand = new SqlCommand(insrt);
+            //sqlCommand.Connection = sqlConnection;
+            //if (sqlCommand.ExecuteNonQuery() != -1)
+            //{
+            //    this.label1.Text = "1";
+            //}
+            //sqlConnection.Close();
+            //query();
+            string u=this.user.Text.Trim();
+            string queryStr = $"select user from Login where user={u}";
+            SqlConnection conn = new SqlConnection(sqlStr);
+            SqlCommand cmd = new SqlCommand(queryStr);
+            conn.Open();
+            cmd.Connection = conn;
+            SqlDataReader reader= cmd.ExecuteReader();
         }
     }
 }

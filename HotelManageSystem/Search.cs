@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Manager;
+using System.Configuration;
 
 namespace QWQ
 {
@@ -21,9 +22,8 @@ namespace QWQ
         }
 
         //整表查询语句，查询函数参数添加条件
-        private string sqlString = @"select room_id, name, price, is_full, deposit from Room,Room_type 
-                                              where Room_type.room_type_id=Room.type_id ";
-
+        private string sqlString = "select room_id, Room_type.name, price, is_full, deposit from Room, Room_type where Room_type.room_type_id=Room.type_id ";
+        private string sqlConnStr= HotelManageSystem.Properties.Settings.Default.ConnectionString;
         /// <summary>
         /// 查询函数. 
         /// 带默认参数，默认查询整张表
@@ -35,8 +35,7 @@ namespace QWQ
             if (queryString == " ")
                 queryString = sqlString; //若调用时未给参数，则以默认方式查询
             //数据库连接字串
-            string connString = @"Data Source=BOI\SQLEXPRESS;Initial Catalog=HotelDB;Integrated Security=True;Pooling=False";
-
+            string connString = sqlConnStr;
             ///
             SqlConnection queryConn = new SqlConnection(connString);    //创建并实例化数据库连接对象,此对象用于查询数据
             queryConn.Open();   //开启连接
@@ -46,7 +45,7 @@ namespace QWQ
             //dataSet中的第一张表即为返回的数据表，作为数据表显示控件的数据源
             this.dgvRoomData.DataSource = dataSet.Tables[0];    //列出返回的数据
             queryConn.Close();  //关闭连接
-            ///
+            //
         }
 
         /// <summary>
@@ -58,9 +57,10 @@ namespace QWQ
         {
             string sqlStr = sqlString;  //默认查询
             string sqlCond = this.comboBox1.Text;   //获取下拉框选中项作为查询条件的参数
-            sqlStr += "AND Room.is_full = 0";   //添加查询空房间条件
+            int i = this.comboBox1.SelectedIndex;
+            sqlStr += "AND Room.is_full = 0 ";   //添加查询空房间条件
             //若下拉框选中"所有房间"或为空，则忽略此条件(即sqlStr=""), 否则添加查询条件
-            sqlStr += (comboBox1.Text == "所有房间" || comboBox1.Text == "") ? "" : $" AND Room_type.name ='{sqlCond}'";
+            sqlStr += (comboBox1.Text == "所有房间" || comboBox1.Text == "") ? " " : $" and Room_type.room_type_id= {i}";
             queryAll(sqlStr);   //调用条件查询函数
         }
 
@@ -73,7 +73,8 @@ namespace QWQ
         {
             string sqlStr = sqlString;  //默认查询
             string sqlCond = this.comboBox1.Text;   //获取下拉框选中项作为查询条件的参数
-            sqlStr += (comboBox1.Text == "所有房间" || comboBox1.Text == "") ? "" : $" AND Room_type.name ='{sqlCond}'";
+            int i = this.comboBox1.SelectedIndex;
+            sqlStr += (comboBox1.Text == "所有房间" || comboBox1.Text == "") ? " " : $" and Room_type.room_type_id= {i}";
             queryAll(sqlStr);   //调用条件查询函数
         }
 
@@ -81,6 +82,7 @@ namespace QWQ
         private void Search_Load(object sender, EventArgs e)
         {    //设置数据表选中方式为选中整行
             dgvRoomData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            inquireDate.Visible = false;
             queryAll(); //默认条件查询
         }
 
