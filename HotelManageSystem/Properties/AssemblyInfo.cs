@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("HotelManageSystem")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("智科Q182数据库课设@Boi_Wong")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Boi")]
 [assembly: AssemblyProduct("HotelManageSystem")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

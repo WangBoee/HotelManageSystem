@@ -11,25 +11,28 @@ using System.Data.SqlClient;
 
 namespace QWQ
 {
-    //public DataRow rowDataFrom = null;
     public partial class OrderRoom : Form
     {
         public OrderRoom()
         {
             InitializeComponent();
         }
-        Search sr;
-        public DataGridViewRow dataViewRow;
+
+        Search sr;  //用于接入上一窗体，实现刷新数据功能
+
+        public DataGridViewRow dataViewRow; //扩大数据行作用域
+
         /// <summary>
         /// 重载构造函数
         /// 通过上一窗体传入的单行数据确定此窗体控件属性
         /// </summary>
-        /// <param name="dataRow"></param>
-        public OrderRoom(DataGridViewRow dataRow,Search order)
+        /// <param name="dataRow">上一窗体选中数据行</param>
+        /// <param name="order">上一窗体实例</param>
+        public OrderRoom(DataGridViewRow dataRow, Search order)
         {
             InitializeComponent();
             dataViewRow = dataRow;
-            sr = order;
+            sr = order; //赋值
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -40,23 +43,33 @@ namespace QWQ
         private void btnOrder_Click(object sender, EventArgs e)
         {
             int roomId = Int32.Parse(this.roomId.Text); //获取房号
-            int id = Int32.Parse(this.newIDNumber.Text.Trim());   //获取输入顾客身份证
+            int id = this.newIDNumber.Text.Trim() == "" ? 0 : Int32.Parse(this.newIDNumber.Text.Trim());   //获取输入顾客id
             int isVIP = this.isVIP.Checked ? 1 : 0; //是否VIP
             int days = this.checkOutTime.Value.DayOfYear - this.checkInTime.Value.DayOfYear;    //获取入住时长，日期相减
-            float otherMoney = Convert.ToSingle(this.otherMoney.Text.Trim());   //获取输入其他消费金额
+            float otherMoney = this.otherMoney.Text.Trim() == "" ? 0 : Convert.ToSingle(this.otherMoney.Text.Trim());   //获取输入其他消费金额
             float roomPrice = Single.Parse(this.roomPrice.Text) * days;    //获取住房总房费
             float desposit = Single.Parse(this.deposit.Text);   //获取押金
-            MessageBox.Show(roomPrice.ToString(),days.ToString());
+            //MessageBox.Show(roomPrice.ToString(),days.ToString());
             string name = this.newPredeterminationName.Text.Trim(); //获取输入顾客姓名
             string phone = this.newPhoneNumber.Text.Trim(); //获取输入顾客手机号
             string checkInTime = this.checkInTime.Text; //获取输入入住日期
             string checkOutTime = this.checkOutTime.Text;   //获取输入离店日期
 
+            if (name == "" || phone == "" || id == 0)
+            {
+                MessageBox.Show("输入完整顾客信息!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (days<=0)
+            {
+                MessageBox.Show("日期选择不正确!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             //MessageBox.Show(isVIP);   //test
             //数据库连接字串
             string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString;
             //sql语句，向Customer表插入新增顾客信息
-            string insert2Cusromers = $@"insert Customer(customer_id, name, phone, is_vip) values({id},'{name}','{phone}',{isVIP})";
+            string insert2Cusromers = $@"insert Customer(customer_id, customer_name, phone, is_vip) values({id},N'{name}',N'{phone}',{isVIP})";
             //sql语句，向Orders表插入订单信息
             string insert2Orders = $@"insert Orders(book_time, in_time, out_time, customer_id, room_id, price, deposit, other_money) values(getdate(), '{checkInTime}','{checkOutTime}',{id},{roomId},{roomPrice},{desposit},{otherMoney})";
 
@@ -80,7 +93,7 @@ namespace QWQ
                         updateCmd.Connection = updateConn;   //将SQL命令对象绑定到conn连接对象
                         if (updateCmd.ExecuteNonQuery() > 0)
                         {   //成功修改房间状态
-                            MessageBox.Show("success", "info");  //信息窗口提示
+                            MessageBox.Show("订房成功", "提示");  //信息窗口提示
                             OrderRoom_Load(sender, e);
                         }
                         updateConn.Close(); //断开数据库连接
@@ -99,7 +112,13 @@ namespace QWQ
             {   //捕获异常, 弹窗提示异常信息
                 MessageBox.Show(ee.Message, "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sr.Ord_updateQue();
+            sr.Ord_updateQue(); //更新Search中数据表的数据
+            //订房成功后，以下清除输入框信息
+            this.newPredeterminationName.Text = "";
+            this.newPhoneNumber.Text = "";
+            this.newIDNumber.Text = "";
+            this.otherMoney.Text = "";
+            this.isVIP.Checked = false;
         }
 
         private void OrderRoom_Load(object sender, EventArgs e)

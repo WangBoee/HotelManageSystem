@@ -26,18 +26,18 @@ namespace HotelManageSystem
             string userName = this.userText.Text.Trim();    //获取输入用户名
             string userPsd = this.psdText.Text.Trim();  //获取输入密码
 
-            string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString;
-            string cmdString = $"select level,userN,psd from Login where userN='{userName}' ";
+            string connString = HotelManageSystem.Properties.Settings.Default.ConnectionString; //数据库连接字符串
+            string cmdString = $"select level,userN,psd from Login where userN=N'{userName}' "; //查询用户名
             if (userName == "" || userPsd == "")
-            {   //用户名或密码为空
+            {   //输入的用户名或密码为空
                 MessageBox.Show("用户名和密码不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                SqlConnection conn = new SqlConnection(connString);
-                SqlCommand cmd = new SqlCommand(cmdString, conn);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                SqlConnection conn = new SqlConnection(connString); //创建连接对象
+                SqlCommand cmd = new SqlCommand(cmdString, conn);   //创建sql命令对象
+                conn.Open();    //打开连接
+                SqlDataReader reader = cmd.ExecuteReader(); //执行sql语句，读一条数据
                 if (reader.Read())
                 {   //reader.Read() 返回值为bool类型，由此判断是否存在此用户
                     int level = reader.GetInt32(0); //获取用户级别
@@ -82,7 +82,12 @@ namespace HotelManageSystem
 
         private void verInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("更新了滑稽图标", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("   !!更新了滑稽图标!!\n\n   Author: Boi_Wong\n   Release Ver.1.0.1.3\n\n@Boi All Rights Reserved", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void ExitApp_Click(object sender, EventArgs e)
+        {   //退出应用
+            Application.Exit();
         }
     }
 }

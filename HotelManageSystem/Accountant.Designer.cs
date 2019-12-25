@@ -81,28 +81,28 @@
             this.dgvBillData.RowHeadersWidth = 51;
             this.dgvBillData.RowTemplate.Height = 27;
             this.dgvBillData.Size = new System.Drawing.Size(842, 355);
-            this.dgvBillData.TabIndex = 1;
+            this.dgvBillData.TabIndex = 4;
             // 
             // dtpStartTime
             // 
             this.dtpStartTime.Location = new System.Drawing.Point(40, 66);
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(169, 25);
-            this.dtpStartTime.TabIndex = 4;
+            this.dtpStartTime.TabIndex = 1;
             // 
             // dtpEndTime
             // 
             this.dtpEndTime.Location = new System.Drawing.Point(282, 65);
             this.dtpEndTime.Name = "dtpEndTime";
             this.dtpEndTime.Size = new System.Drawing.Size(169, 25);
-            this.dtpEndTime.TabIndex = 4;
+            this.dtpEndTime.TabIndex = 1;
             // 
             // searchDate
             // 
             this.searchDate.Location = new System.Drawing.Point(561, 47);
             this.searchDate.Name = "searchDate";
             this.searchDate.Size = new System.Drawing.Size(115, 44);
-            this.searchDate.TabIndex = 5;
+            this.searchDate.TabIndex = 2;
             this.searchDate.Text = "日期查询";
             this.searchDate.UseVisualStyleBackColor = true;
             this.searchDate.Click += new System.EventHandler(this.btSearch_Click);
@@ -119,6 +119,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.searchAll);
@@ -128,8 +129,8 @@
             this.groupBox1.Controls.Add(this.dgvBillData);
             this.groupBox1.Location = new System.Drawing.Point(12, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(854, 471);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.Size = new System.Drawing.Size(854, 489);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // label5
@@ -147,10 +148,10 @@
             this.searchAll.Location = new System.Drawing.Point(711, 46);
             this.searchAll.Name = "searchAll";
             this.searchAll.Size = new System.Drawing.Size(115, 44);
-            this.searchAll.TabIndex = 5;
+            this.searchAll.TabIndex = 3;
             this.searchAll.Text = "查询全部";
             this.searchAll.UseVisualStyleBackColor = true;
-            this.searchAll.Click += new System.EventHandler(this.btSearch_Click);
+            this.searchAll.Click += new System.EventHandler(this.searchAll_Click);
             // 
             // label3
             // 
@@ -199,7 +200,7 @@
             // book_time
             // 
             this.book_time.DataPropertyName = "book_time";
-            this.book_time.HeaderText = "订单生产日期";
+            this.book_time.HeaderText = "订单生成日期";
             this.book_time.MinimumWidth = 6;
             this.book_time.Name = "book_time";
             this.book_time.ReadOnly = true;
@@ -232,6 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(878, 589);
             this.Controls.Add(this.allBill);
             this.Controls.Add(this.label6);
@@ -240,6 +242,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(896, 636);
+            this.MinimumSize = new System.Drawing.Size(896, 636);
             this.Name = "Accountant";
             this.Text = "账单";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Accountant_FormClosed);
@@ -264,15 +269,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.BindingSource staffBindingSource;
         private System.Windows.Forms.Button searchAll;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label counts;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label allBill;
         private System.Windows.Forms.DataGridViewTextBoxColumn order_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn book_time;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn deposit;
         private System.Windows.Forms.DataGridViewTextBoxColumn other_money;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label counts;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label allBill;
     }
 }
 

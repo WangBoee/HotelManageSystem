@@ -44,7 +44,7 @@ namespace Manager
 
         private void Accountant_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Restart();
         }
 
         private void Accountant_Load(object sender, EventArgs e)
@@ -62,6 +62,11 @@ namespace Manager
             reader = cmd.ExecuteReader();
             if (reader.Read())
                 this.allBill.Text = reader.GetSqlDouble(0).ToString();
+        }
+
+        private void searchAll_Click(object sender, EventArgs e)
+        {
+            query();
         }
     }
 }
