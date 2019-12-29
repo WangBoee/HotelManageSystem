@@ -1,0 +1,2 @@
+1.项目打包生成的安装文件文娱release文件夹下
+2.HotelMangeSystem文件夹为项目源码所在文件夹
